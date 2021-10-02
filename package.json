@@ -1,0 +1,23 @@
+{
+  "name": "digiclass",
+  "version": "1.0.0",
+  "description": "This is a university project of the group las bichotas Puto el que lo lea :)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/metachoSamuel/digiClass.git"
+  },
+  "author": "lasbichotas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/metachoSamuel/digiClass/issues"
+  },
+  "homepage": "https://github.com/metachoSamuel/digiClass#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql": "^2.18.1"
+  }
+}
