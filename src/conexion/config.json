@@ -1,6 +1,7 @@
 {
     "host": "localhost",
-    "user": "bichotas",
-    "password": "lasbichotas",
+    
+    "user": "root",
+    "password": "",
     "database": "nocturno212"
 }
