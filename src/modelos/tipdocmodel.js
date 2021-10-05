@@ -3,14 +3,14 @@ var connection = require('../conexion/index')
 var TipDocModel = {}
 
 TipDocModel.getTipDocs = function(callback){
-    var sql="SELECT `id_tip_doc`, `tipo_documento`, `iniciales_tip_doc` FROM `ct_tipos_documentos`"
+    var sql="SELECT * FROM `ct_tipos_documentos`"
     
-    connection.query(sql, function(error, rows){
+    connection.query(sql, function(error, row){
         if(error){
             throw error
         }else{
-            //callback(null, rows)
-            callback(null, JSON.stringify(rows))
+            callback(null, row)
+            //callback(null, JSON.stringify(rows))
         }
     });
 }
