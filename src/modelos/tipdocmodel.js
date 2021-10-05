@@ -9,16 +9,17 @@ TipDocModel.getTipDocs = function(callback){
         if(error){
             throw error
         }else{
-            callback(null, rows)
+            //callback(null, rows)
+            callback(null, JSON.stringify(rows))
         }
     });
 }
 
-TipDocModel.getTipDoc = function(id, callback){
+TipDocModel.getTipDoc = function (id, callback) {
 
 }
 
-TipDocModel.insertTipDoc = function(TipDocData, callback){
+TipDocModel.insertTipDoc = function (TipDocData, callback) {
 
 }
 
