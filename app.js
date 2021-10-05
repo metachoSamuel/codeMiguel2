@@ -1,11 +1,12 @@
 var express = require('express')
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser'), port=3000;
 var http = require('http')
 var path = require('path')
 
 
-var port=3000
+
 var conexion = require('./src/conexion/index')
+var tipdoc = require('./src/rutas/tipdocruta')
 
 var app = express()
 
@@ -31,8 +32,11 @@ app.use(function(req, res, next){
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE')
     res.setHeader('Access-Control-Allow-Headers', 'X-requested-With,content-type')
     res.setHeader('Access-Control-Allow-Credentails', true)
+    next()
 })
 
+
+app.use('/tipdoc', tipdoc())
 http.createServer(app).listen(app.get('port'), function(){
     console.log('servidor Express escuchando por el puerto '+app.get('port'))
 })
