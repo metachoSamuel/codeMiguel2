@@ -7,6 +7,7 @@ var path = require('path')
 
 var conexion = require('./src/conexion/index')
 var tipdoc = require('./src/rutas/tipdocruta')
+var persona = require('./src/rutas/personaruta')
 
 var app = express()
 
@@ -35,8 +36,9 @@ app.use(function(req, res, next){
     next()
 })
 
-
+app.use('/persona', persona())
 app.use('/tipdoc', tipdoc())
+
 http.createServer(app).listen(app.get('port'), function(){
     console.log('servidor Express escuchando por el puerto '+app.get('port'))
 })
