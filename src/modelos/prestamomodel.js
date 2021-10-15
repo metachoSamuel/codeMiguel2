@@ -33,9 +33,10 @@ PrestamoModel.updatePrestamo= function(PrestamoData, callback){
         +"fecha_prestamo="+connection.escape(PrestamoData.fecha_prestamo)
         +", fecha_entrega="+connection.escape(PrestamoData.fecha_entrega)
         +", id_persona="+connection.escape(PrestamoData.id_persona)
-        +", id_elemento="+connection.escape(PrestamoData.id_elemento)+";"
+        +", id_elemento="+connection.escape(PrestamoData.id_elemento)
+        +" WHERE id_prestamo="+connection.escape(PrestamoData.id_prestamo)+";"
 
-        connection.query(sql, PrestamoData, function(error){
+        connection.query(sql, function(error){
             if(error){
                 throw error
             }else{
