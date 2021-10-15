@@ -11,6 +11,7 @@ var persona = require('./src/rutas/personaruta')
 var asistencia = require('./src/rutas/asistenciaruta')
 var materia = require('./src/rutas/materiaruta')
 var carrera = require('./src/rutas/carreraruta')
+var prestamo = require('./src/rutas/prestamoruta')
 
 var app = express()
 
@@ -44,6 +45,7 @@ app.use('/asistencia', asistencia())
 app.use('/materia', materia())
 app.use('/tipdoc', tipdoc())
 app.use('/carrera', carrera())
+app.use('/prestamo', prestamo())
 
 http.createServer(app).listen(app.get('port'), function(){
     console.log('servidor Express escuchando por el puerto '+app.get('port'))
