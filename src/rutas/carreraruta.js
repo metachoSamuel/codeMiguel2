@@ -32,7 +32,7 @@ module.exports = function(){
                 }
             })
         }else{
-            res.status(500).json({"msg":"Registro no existe"})
+            res.status(500).json({"msg":"No es un numero"})
         }
     })
 

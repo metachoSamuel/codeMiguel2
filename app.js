@@ -14,6 +14,7 @@ var carrera = require('./src/rutas/carreraruta')
 var prestamo = require('./src/rutas/prestamoruta')
 var audioVisual = require('./src/rutas/audiovisualruta')
 var contacto = require('./src/rutas/contactoruta')
+var informe = require('./src/rutas/informeruta')
 
 var app = express()
 
@@ -50,6 +51,7 @@ app.use('/carrera', carrera())
 app.use('/prestamo', prestamo())
 app.use('/audiovisual', audioVisual())
 app.use('/contacto', contacto())
+app.use('/informe', informe())
 
 http.createServer(app).listen(app.get('port'), function(){
     console.log('servidor Express escuchando por el puerto '+app.get('port'))
