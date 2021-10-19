@@ -7,7 +7,9 @@ var path = require('path')
 
 var conexion = require('./src/conexion/index')
 var tipdoc = require('./src/rutas/tipdocruta')
+
 var persona = require('./src/rutas/personaruta')
+
 var asistencia = require('./src/rutas/asistenciaruta')
 var materia = require('./src/rutas/materiaruta')
 var carrera = require('./src/rutas/carreraruta')
@@ -15,6 +17,8 @@ var prestamo = require('./src/rutas/prestamoruta')
 var audioVisual = require('./src/rutas/audiovisualruta')
 var contacto = require('./src/rutas/contactoruta')
 var informe = require('./src/rutas/informeruta')
+
+
 
 var app = express()
 

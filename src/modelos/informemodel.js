@@ -1,8 +1,6 @@
 var connection = require('../conexion/index')
 var InformeModel = {}
 
-var fechaInicio = '2021-02-01'
-var fechaFinal = '2021-02-09'
 
 InformeModel.getInformeAsistencia = function (id, callback) {
     if (connection) {
@@ -24,6 +22,24 @@ InformeModel.getInformeAsistencia = function (id, callback) {
     }
 }
 
+InformeModel.getInformePrestamo = function(id, callback){
+    if(connection){
+        var sql = "SELECT id_prestamo, fecha_prestamo, fecha_entrega, P.id_persona, A.elemento, A.estado, PE.nombre_1, PE.apellido_1"
+        +" FROM tb_prestamo AS P"
+        +"      INNER JOIN ct_audio_visual AS A ON(A.id_elemento=P.id_elemento)"
+        +"      INNER JOIN tb_persona AS PE ON(P.id_persona=PE.id_persona)"
+        +"          WHERE(A.id_elemento="+connection.escape(id)+" AND P.fecha_prestamo BETWEEN '2021-06-01' AND '2021-06-30')"
+        +"              ORDER BY P.fecha_prestamo"  
+
+        connection.query(sql, function(error, row){
+            if(error){
+                throw error
+            }else{
+                callback(null, row)
+            }
+        })
+    }
+}
 
 module.exports = InformeModel
 

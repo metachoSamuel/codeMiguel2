@@ -5,7 +5,7 @@ var InformeModel = require('../modelos/informemodel')
 
 module.exports = function(){
 
-    router.get('/:id', function(req, res){
+    router.get('/asistencia/:id', function(req, res){
         var id = req.params.id
 
         if(!isNaN(id)){
@@ -14,6 +14,22 @@ module.exports = function(){
                     res.status(200).json(data)
                 }else{
                     res.json(404, {"msg":"No hay registro de asistencias entre las fechas"})
+                }
+            })
+        }else{
+            res.status(500).json({"msg":"No es un numero"})
+        }
+    })
+
+    router.get('/prestamo/:id', function(req, res){
+        var id = req.params.id
+        
+        if(!isNaN(id)){
+            InformeModel.getInformePrestamo(id, function(error, data){
+                if(typeof data !== 'undefined' && data.length > 0){
+                    res.status(200).json(data)
+                }else{
+                    res.json(404, {"masistenciassg":"No hay registro de prestamos entre las fechas"})
                 }
             })
         }else{

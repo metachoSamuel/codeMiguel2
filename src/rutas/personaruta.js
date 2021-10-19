@@ -14,10 +14,10 @@ module.exports = function(){
     //CRUL Read(Leer)
     router.get('/:id', function(req, res){
         var id = req.params.id
-
+        //si es un numero
         if (!isNaN(id)){
             PersonaModel.getPersona(id, function(error, data){
-                if (typeof data !== 'undefined' && data.length > 0){
+                if (typeof data !==  'undefined' && data.length > 0){
                     res.status(200).json(data)
                 }else{
                     res.json(404, {
