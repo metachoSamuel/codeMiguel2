@@ -3,7 +3,7 @@ var CarreraModel = {}
 
 CarreraModel.insertCarrera = function(CarreraData, callback){
     if(connection){
-        var sql = "INSERT INTO ct_carrera SET ?"
+        var sql = "INSERT INTO ct_carreras SET ?"
         connection.query(sql, CarreraData, function(error, result){
             if(error){
                 throw error
@@ -16,7 +16,7 @@ CarreraModel.insertCarrera = function(CarreraData, callback){
 
 CarreraModel.getCarrera = function(id, callback){
     if(connection){
-        var sql = "SELECT * FROM ct_carrera WHERE id_carrera="+connection.escape(id)+";"
+        var sql = "SELECT * FROM ct_carreras WHERE id_carrera="+connection.escape(id)+";"
         connection.query(sql, function(error, row){
             if(error){
                 throw error
@@ -29,7 +29,7 @@ CarreraModel.getCarrera = function(id, callback){
 
 CarreraModel.updateCarrera = function(CarreraData, callback){
     if(connection){
-        var sql = "UPDATE ct_carrera SET "
+        var sql = "UPDATE ct_carreras SET "
         +"nombre="+connection.escape(CarreraData.nombre)
         +" WHERE id_carrera="+connection.escape(CarreraData.id_carrera)+";"
         connection.query(sql, function(error, result){
@@ -44,7 +44,7 @@ CarreraModel.updateCarrera = function(CarreraData, callback){
 
 CarreraModel.getCarreras = function(callback){
     if(connection){
-        var sql = "SELECT * FROM ct_carrera"
+        var sql = "SELECT * FROM ct_carreras"
         connection.query(sql, function(error, row){
             if(error){
                 throw error

@@ -3,7 +3,7 @@ var AudioVisualModel = {}
 
 AudioVisualModel.insertAudioVisual = function(AudioVisualData, callback){
     if(connection){
-        var sql = "INSERT INTO ct_audio_visual SET ?"
+        var sql = "INSERT INTO ct_audio_visuales SET ?"
         connection.query(sql, AudioVisualData, function(error){
             if(error){
                 throw error
@@ -16,7 +16,7 @@ AudioVisualModel.insertAudioVisual = function(AudioVisualData, callback){
 
 AudioVisualModel.getAudioVisual = function(id, callback){
     if(connection){
-        var sql = "SELECT * FROM ct_audio_visual WHERE id_elemento="+connection.escape(id)+";"
+        var sql = "SELECT * FROM ct_audio_visuales WHERE id_elemento="+connection.escape(id)+";"
         connection.query(sql, function(error, row){
             if(error){
                 throw error
@@ -29,7 +29,7 @@ AudioVisualModel.getAudioVisual = function(id, callback){
 
 AudioVisualModel.updateAudioVisual = function(AudioVisualData, callback){
     if(connection){
-        var sql = "UPDATE ct_audio_visual SET "
+        var sql = "UPDATE ct_audio_visuales SET "
         +"elemento="+connection.escape(AudioVisualData.elemento)
         +", estado="+connection.escape(AudioVisualData.estado)
         +" WHERE id_elemento="+connection.escape(AudioVisualData.id_elemento)+";"
@@ -46,7 +46,7 @@ AudioVisualModel.updateAudioVisual = function(AudioVisualData, callback){
 
 AudioVisualModel.getAudioVisuales = function(callback){
     if(connection){
-        var sql = "SELECT * FROM ct_audio_visual;"
+        var sql = "SELECT * FROM ct_audio_visuales;"
         connection.query(sql, function(error, row){
             if(error){
                 throw error

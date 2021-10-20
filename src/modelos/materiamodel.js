@@ -3,7 +3,7 @@ var MateriaModel={}
 
 MateriaModel.insertMateria = function(MateriaData, callback){
     if(connection){
-        var sql="INSERT INTO tb_materia SET ?"
+        var sql="INSERT INTO tb_materias SET ?"
         connection.query(sql, MateriaData, function(error, result){
             if(error){
                 throw error
@@ -16,7 +16,7 @@ MateriaModel.insertMateria = function(MateriaData, callback){
 
 MateriaModel.getMateria=function(id, callback){
     if(connection){
-        var sql="SELECT * FROM tb_materia WHERE id_materia="+connection.escape(id)+";"
+        var sql="SELECT * FROM tb_materias WHERE id_materia="+connection.escape(id)+";"
         connection.query(sql, function(error, row){
             if(error){
                 throw error
@@ -29,7 +29,7 @@ MateriaModel.getMateria=function(id, callback){
 
 MateriaModel.updateMateria = function(MateriaData, callback){
     if(connection){
-        var sql="UPDATE tb_materia SET "
+        var sql="UPDATE tb_materias SET "
         +" nombre="+connection.escape(MateriaData.nombre)
         +", id_carrera="+connection.escape(MateriaData.id_carrera)
         +"WHERE id_materia="+connection.escape(MateriaData.id_materia)+";"
@@ -46,7 +46,7 @@ MateriaModel.updateMateria = function(MateriaData, callback){
 
 MateriaModel.getMaterias=function(callback){
     if(connection){
-        var sql = "SELECT * FROM tb_materia"
+        var sql = "SELECT * FROM tb_materias"
         connection.query(sql, function(error, row){
             if(error){
                 throw error

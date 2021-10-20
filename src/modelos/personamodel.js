@@ -3,7 +3,7 @@ var PersonaModel = {}
 
 PersonaModel.getPersonas = function (callback) {
     if (connection) {
-        var sql = "SELECT * FROM `tb_persona`"
+        var sql = "SELECT * FROM `tb_personas`"
 
         connection.query(sql, function (error, row) {
             if (error) {
@@ -17,7 +17,7 @@ PersonaModel.getPersonas = function (callback) {
 
 PersonaModel.getPersona = function(id, callback){
     if (connection){
-        var sql = "SELECT * FROM tb_persona WHERE id_persona="+connection.escape(id)+";"
+        var sql = "SELECT * FROM tb_personas WHERE id_persona="+connection.escape(id)+";"
         connection.query(sql, function(error, row){
             if (error){
                 throw error
@@ -30,7 +30,7 @@ PersonaModel.getPersona = function(id, callback){
 
 PersonaModel.insertPersona = function(PersonaData, callback){
     if(connection){
-        var sql="INSERT INTO tb_persona SET ?"
+        var sql="INSERT INTO tb_personas SET ?"
         connection.query(sql, PersonaData, function(error, result){
             if(error){
                 throw error
@@ -43,7 +43,7 @@ PersonaModel.insertPersona = function(PersonaData, callback){
 
 PersonaModel.updatePersona= function(PersonaData, callback){
     if (connection){
-        var sql="UPDATE tb_persona SET "
+        var sql="UPDATE tb_personas SET "
         + " nombre_1 = " + connection.escape(PersonaData.nombre_1)
         + ", nombre_2 = " + connection.escape(PersonaData.nombre_2)
         + ", apellido_1 = " + connection.escape(PersonaData.apellido_1)

@@ -6,7 +6,6 @@ var path = require('path')
 
 
 var conexion = require('./src/conexion/index')
-var tipdoc = require('./src/rutas/tipdocruta')
 
 var persona = require('./src/rutas/personaruta')
 
@@ -50,7 +49,7 @@ app.use(function(req, res, next){
 app.use('/persona', persona())
 app.use('/asistencia', asistencia())
 app.use('/materia', materia())
-app.use('/tipdoc', tipdoc())
+
 app.use('/carrera', carrera())
 app.use('/prestamo', prestamo())
 app.use('/audiovisual', audioVisual())

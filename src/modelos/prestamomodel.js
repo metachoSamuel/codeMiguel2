@@ -3,7 +3,7 @@ var PrestamoModel = {}
 
 PrestamoModel.insertPrestamo = function(PrestamoData, callback){
     if(connection){
-        var sql = "INSERT INTO tb_prestamo SET ?"
+        var sql = "INSERT INTO tb_prestamos SET ?"
         connection.query(sql, PrestamoData, function(error){
             if(error){
                 throw error
@@ -16,7 +16,7 @@ PrestamoModel.insertPrestamo = function(PrestamoData, callback){
 
 PrestamoModel.getPrestamo = function(id, callback){
     if(connection){
-        var sql = "SELECT * FROM tb_prestamo WHERE id_prestamo="+connection.escape(id)+";"
+        var sql = "SELECT * FROM tb_prestamos WHERE id_prestamo="+connection.escape(id)+";"
         connection.query(sql, function(error, row){
             if(error){
                 throw error
@@ -29,7 +29,7 @@ PrestamoModel.getPrestamo = function(id, callback){
 
 PrestamoModel.updatePrestamo= function(PrestamoData, callback){
     if(connection){
-        var sql = "UPDATE tb_prestamo SET"
+        var sql = "UPDATE tb_prestamos SET"
         +"fecha_prestamo="+connection.escape(PrestamoData.fecha_prestamo)
         +", fecha_entrega="+connection.escape(PrestamoData.fecha_entrega)
         +", id_persona="+connection.escape(PrestamoData.id_persona)
@@ -48,7 +48,7 @@ PrestamoModel.updatePrestamo= function(PrestamoData, callback){
 
 PrestamoModel.getPrestamos=function(callback){
     if(connection){
-        var sql="SELECT * FROM tb_prestamo;"
+        var sql="SELECT * FROM tb_prestamos;"
         connection.query(sql, function(error, row){
             if(error){
                 throw error

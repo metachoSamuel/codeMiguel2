@@ -44,6 +44,7 @@ module.exports = function(){
             tipo_contacto: req.body.tipo_contacto,
             dato_contacto: req.body.dato_contacto,
             prioridad_contacto: req.body.prioridad_contacto,
+            id_persona: req.body.id_persona
         }
 
         ContactoModel.updateContacto(ContactoData, function(error, data){
