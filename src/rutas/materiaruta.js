@@ -9,11 +9,11 @@ module.exports = function(){
         
         var MateriaData={
             id_materia: null,
-            nombre: req.body.nombre,
+            nombre_materia: req.body.nombre_materia,
             id_carrera: req.body.id_carrera,
         }
 
-        MateriaModel.insertMaterias(MateriaData, function(error, data){
+        MateriaModel.insertMateria(MateriaData, function(error, data){
             if(data){
                 res.status(200).json(data)
             }else{
@@ -42,7 +42,7 @@ module.exports = function(){
     router.put('/', function(req, res){
         var MateriaData = {
             id_materia: req.body.id_materia,
-            nombre: req.body.nombre,
+            nombre_materia: req.body.nombre_materia,
             id_carrera: req.body.id_carrera, 
         }
 

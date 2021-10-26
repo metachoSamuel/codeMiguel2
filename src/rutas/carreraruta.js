@@ -8,7 +8,7 @@ module.exports = function(){
     router.post('/', function(req, res){
         var CarreraData = {
             id_carrera: null,
-            nombre: req.body.nombre,
+            nombre_carrera: req.body.nombre_carrera,
         }
 
         CarreraModel.insertCarrera(CarreraData, function(error, data){
@@ -39,7 +39,7 @@ module.exports = function(){
     router.put('/', function(req, res){
         var CarreraData={
             id_carrera: req.body.id_carrera,
-            nombre: req.body.nombre,
+            nombre_carrera: req.body.nombre_carrera,
         }
 
         CarreraModel.updateCarrera(CarreraData, function(error, data){

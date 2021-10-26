@@ -3,7 +3,10 @@ var AsistenciaModel={}
 
 AsistenciaModel.getAsistencias=function(callback){
     if(connection){
-        var sql = "SELECT * FROM `tb_asistencias`"
+        var sql = "SELECT `id_asistencia`, `fecha`,`estado`, `observaciones`, P.apellido_1, P.nombre_1,  M.nombre_materia FROM"
+        +" `tb_asistencias` AS A"
+        +" INNER JOIN tb_personas as P ON(A.id_persona = P.id_persona)"
+        +" INNER JOIN tb_materias as M ON(A.id_materia = M.id_materia)"
 
         connection.query(sql, function(error, row){
             if(error){
@@ -17,7 +20,11 @@ AsistenciaModel.getAsistencias=function(callback){
 
 AsistenciaModel.getAsistencia=function(id, callback){
     if(connection){
-        var sql = "SELECT * FROM tb_asistencias WHERE id_asistencia="+connection.escape(id)+";"
+        var sql = "SELECT `id_asistencia`, `fecha`,`estado`, `observaciones`, P.apellido_1, P.nombre_1,  M.nombre_materia FROM"
+        +" `tb_asistencias` AS A"
+        +" INNER JOIN tb_personas as P ON(A.id_persona = P.id_persona)"
+        +" INNER JOIN tb_materias as M ON(A.id_materia = M.id_materia)"
+        +" WHERE id_asistencia="+connection.escape(id)+";"
         connection.query(sql, function(error, row){
             if(error){
                 throw error

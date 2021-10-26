@@ -16,7 +16,9 @@ MateriaModel.insertMateria = function(MateriaData, callback){
 
 MateriaModel.getMateria=function(id, callback){
     if(connection){
-        var sql="SELECT * FROM tb_materias WHERE id_materia="+connection.escape(id)+";"
+        var sql="SELECT `id_materia`, `nombre_materia`, C.nombre_carrera FROM tb_materias AS M"
+        +" INNER JOIN ct_carreras AS C on(M.id_carrera = C.id_carrera)" 
+        +" WHERE id_materia="+connection.escape(id)+";"
         connection.query(sql, function(error, row){
             if(error){
                 throw error
@@ -30,9 +32,9 @@ MateriaModel.getMateria=function(id, callback){
 MateriaModel.updateMateria = function(MateriaData, callback){
     if(connection){
         var sql="UPDATE tb_materias SET "
-        +" nombre="+connection.escape(MateriaData.nombre)
+        +" nombre_materia="+connection.escape(MateriaData.nombre_materia)
         +", id_carrera="+connection.escape(MateriaData.id_carrera)
-        +"WHERE id_materia="+connection.escape(MateriaData.id_materia)+";"
+        +" WHERE id_materia="+connection.escape(MateriaData.id_materia)+";"
 
         connection.query(sql, function(error, result){
             if(error){
@@ -46,7 +48,8 @@ MateriaModel.updateMateria = function(MateriaData, callback){
 
 MateriaModel.getMaterias=function(callback){
     if(connection){
-        var sql = "SELECT * FROM tb_materias"
+        var sql="SELECT `id_materia`, `nombre_materia`, C.nombre_carrera FROM tb_materias AS M"
+        +" INNER JOIN ct_carreras AS C on(M.id_carrera = C.id_carrera)" 
         connection.query(sql, function(error, row){
             if(error){
                 throw error

@@ -30,7 +30,7 @@ CarreraModel.getCarrera = function(id, callback){
 CarreraModel.updateCarrera = function(CarreraData, callback){
     if(connection){
         var sql = "UPDATE ct_carreras SET "
-        +"nombre="+connection.escape(CarreraData.nombre)
+        +"nombre_carrera="+connection.escape(CarreraData.nombre_carrera)
         +" WHERE id_carrera="+connection.escape(CarreraData.id_carrera)+";"
         connection.query(sql, function(error, result){
             if(error){
