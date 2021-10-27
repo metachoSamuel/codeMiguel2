@@ -3,7 +3,7 @@ var PersonaModel = {}
 
 PersonaModel.getPersonas = function (callback) {
     if (connection) {
-        var sql = "SELECT * FROM `tb_personas`"
+        var sql = "SELECT * FROM tb_personas;"
 
         connection.query(sql, function (error, row) {
             if (error) {
