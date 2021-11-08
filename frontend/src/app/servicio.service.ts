@@ -31,6 +31,14 @@ export class ServicioService {
     };
   }
 
+  // Método Listar carreras
+  getCarreras(): Observable<any>
+  {
+
+    return this.http.get(this.Url + "/carreras" , httpOptions);
+   
+  }
+
   /*
   //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   // SERVICIO CRUD DE TIPOS DE DOCUMENTOS

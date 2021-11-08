@@ -9,8 +9,9 @@ import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './appcomponent/app.component';
-import { MenuInicioComponent } from './menu-inicio/menu-inicio.component';
 import { ServicioService } from './servicio.service';
+import { InicioComponent } from './inicio/inicio.component';
+import { CarreraComponent } from './carrera/carrera.component';
 
 const appRoutes: Routes = 
 [
@@ -21,14 +22,19 @@ const appRoutes: Routes =
   },
   {
     path: 'Inicio',
-    component:MenuInicioComponent,
+    component:InicioComponent,
+  },
+  {
+    path: 'Carrera',
+    component:CarreraComponent,
   }
 ]
 
 @NgModule({
   declarations: [
     AppComponent,
-    MenuInicioComponent
+    InicioComponent,
+    CarreraComponent,
   ],
   imports: [
     BrowserModule,
