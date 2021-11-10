@@ -34,36 +34,17 @@ export class ServicioService {
   // Método Listar carreras
   getCarreras(): Observable<any>
   {
+    return this.http.get(this.Url + "/carrera" , httpOptions);   
+  }
 
-    return this.http.get(this.Url + "/carreras" , httpOptions);
-   
+  // Método mostrar una carrera
+
+  getCarrera(id:any): Observable<any> 
+  {    
+    return this.http.get(this.Url + "/carrera" + id, httpOptions);
   }
 
   /*
-  //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-  // SERVICIO CRUD DE TIPOS DE DOCUMENTOS
-  //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
-
-  // Método Listar de los Tipos de documentos 
-  getTipDocs(): Observable<any> {
-
-    //console.log("estamos aqui  " + this.Url+ "/marca", httpOptions);
-
-    return this.http.get(this.Url + "/tipdoc", httpOptions).pipe(
-      map(this.extractData)      
-    );
-  }
-
-  //-------------------------------------------------------------
- // Método mostrar un solo Tipo de documento 
-
-  getTipDoc(id): Observable<any> {
-    
-    return this.http.get(this.Url + "/tipdoc" + id, httpOptions).pipe(
-      map(this.extractData));
-  }
-
-  //-------------------------------------------------------------
  // Método para insertar un nuevo Tipo de documento 
 
   async insertTipDoc(TipDocD): Promise<any> {
@@ -90,6 +71,6 @@ export class ServicioService {
   }
   
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
 */
+
 }
