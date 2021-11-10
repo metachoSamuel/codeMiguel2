@@ -1,0 +1,84 @@
+<body>
+    <header>
+        <h1>
+          {{ title }} 
+        </h1>
+        <img width="300" alt="Logo Proyecto" src="/assets/LogoBichotas.png">
+    </header>
+    <div>
+        <nav class="menu">
+            <ul>
+            <li><a routerLink="/Inicio">Inicio</a></li>
+            <li><a routerLink="/Carrera">Carreras</a></li>
+            <li><a routerLink="/Carrera">Contacto</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <h3><a routerLink="/Inicio">Inicio</a></h3>
+    <div class="lista">
+        <h2>Lista Carreras</h2>
+        <form (ngSubmit)="consultaCarreras(1)" [formGroup]="ListaCarreras">
+            <button type="submit" style="margin-right: 30px">Mostrar carreras</button>
+            <button (click)="LimpiarLista()" style="scroll-margin-left: 30px">Limpiar lista</button>
+            <br><br><br><br>
+
+            <h2>{{TituloCarreras}}</h2>
+            <table>
+                <thead>
+                    <h2>{{TituloCarreras}}</h2>        
+                    <th>{{TablaCarreras[0]}}</th>
+                    <th>{{TablaCarreras[1]}}</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor = "let carrera of Carreras">
+                        <th>{{ carrera.id_carrera}}</th>
+                        <th>{{ carrera.nombre_carrera}}</th>
+                    </tr>
+                </tbody>            
+            </table>
+        </form>   
+    </div>
+
+    <!-- para mostrar el un solo Tipo de Documento -->
+                            
+    <div class="buscar">
+        <h2>Mostramos la carrera seleccionada: </h2>
+    
+        <form (ngSubmit)="buscarCarrera()" [formGroup]="filtrarCarrera">
+        Id de la carrera a mostrar
+        <select class="dropdown"  formControlName="combofiltro" (click)="consultaCarreras(2)">
+            <option value="value1">Carrera a buscar</option>
+            <option *ngFor="let Carrera of comboListaCarrera" [value]="Carrera.id_carrera">
+                {{Carrera.id_carrera}} - 
+                {{Carrera.nombre_carrera}} 
+            </option>
+        </select>    
+
+        <br><br>
+
+        <button type="submit">Buscar Carrera</button>
+        </form>
+    
+        <ul>
+            <h2>{{TituloCarrera}}</h2>
+    
+            <table class="tabBuscar"> 
+                <thead class="Colb">
+                <th class="b">{{TabBusCarrera[0]}}</th> 
+                <th class="b">{{TabBusCarrera[1]}}</th> 
+                </thead>
+        
+                <tbody class="Filb">  
+                    <tr class="b" *ngFor="let carrera of MiCarrera">
+                        <th class="b">{{ carrera.id_carrera}} </th>
+                        <th class="b">{{ carrera.nombre_carrera}} </th>
+                    </tr>
+                </tbody>         
+            </table>    
+        </ul>    
+        <br>    
+    </div>
+    <br><br><br><br>
+</body>
+
