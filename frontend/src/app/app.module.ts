@@ -2,7 +2,10 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 // Librería para poder consumir el servicio
+
 import { HttpModule, } from '@angular/http';
+
+
 import { HttpClientModule, } from '@angular/common/http';
 import { RouterModule, Routes} from '@angular/router';
 import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
