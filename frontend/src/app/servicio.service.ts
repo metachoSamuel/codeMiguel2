@@ -44,6 +44,15 @@ export class ServicioService {
     return this.http.get(this.Url + "/carrera" + id, httpOptions);
   }
 
+  getAsistencia(): Observable<any>
+  {
+    return this.http.get(this.Url + "/asistencia", httpOptions)
+  }
+
+  getPrestamo(): Observable<any>
+  {
+    return this.http.get(this.Url + "/prestamo", httpOptions)
+  }
   /*
  // Método para insertar un nuevo Tipo de documento 
 

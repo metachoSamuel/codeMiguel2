@@ -7,6 +7,7 @@ AsistenciaModel.getAsistencias=function(callback){
         +" `tb_asistencias` AS A"
         +" INNER JOIN tb_personas as P ON(A.id_persona = P.id_persona)"
         +" INNER JOIN tb_materias as M ON(A.id_materia = M.id_materia)"
+        +" ORDER BY id_asistencia;"
 
         connection.query(sql, function(error, row){
             if(error){

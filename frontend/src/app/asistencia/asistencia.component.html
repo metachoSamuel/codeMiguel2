@@ -1,0 +1,58 @@
+<body>
+    <header>
+        <h1>
+            {{ title }}
+        </h1>
+        <img width="300" alt="Logo Proyecto" src="/assets/LogoBichotas.png">
+    </header>
+    <div>
+        <nav class="menu">
+            <ul>
+                <li><a routerLink="/Inicio">Inicio</a></li>
+                <li><a routerLink="/Carrera">Carreras</a></li>
+                <li><a routerLink="/Carrera">Contacto</a></li>
+                <li><a routerLink="/Asistencia">asistencia</a></li>
+                <li><a routerLink="/Prestamo">prestamos</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <h3><a routerLink="/Inicio">Inicio</a></h3>
+    <div class="lista">
+        <h2>Lista Asistencias</h2>
+        <form (ngSubmit)="consultarAsistencia(1)" [formGroup]="ListaAsistencias">
+            <button type="submit" style="margin-right: 30px">Mostrar Asistencias</button>
+
+            <br><br><br><br>
+
+            <h2>{{TituloAsistencias}}</h2>
+            <table>
+                <thead>
+
+                    <th>{{TablaAsistencia[0]}}</th>
+                    <th>{{TablaAsistencia[1]}}</th>
+                    <th>{{TablaAsistencia[2]}}</th>
+                    <th>{{TablaAsistencia[3]}}</th>
+                    <th>{{TablaAsistencia[4]}}</th>
+                    <th>{{TablaAsistencia[5]}}</th>
+
+                </thead>
+                <tbody>
+                    <tr *ngFor="let asistencia of Asistencias">
+                        <th> {{ asistencia.id_asistencia}} </th>
+                        <th> {{ asistencia.fecha}} </th>
+                        <th *ngIf="asistencia.estado==1"> Asistio </th>
+                        <th *ngIf="asistencia.estado==0"> No Asistio </th>
+                        <th> {{ asistencia.observaciones}} </th>
+                        <th> {{ asistencia.apellido_1}} {{ asistencia.nombre_1}} </th>
+                        <th> {{ asistencia.nombre_materia}} </th>
+
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+
+    <!-- para mostrar el un solo Tipo de Documento -->
+
+</body>
