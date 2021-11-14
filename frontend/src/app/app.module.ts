@@ -15,6 +15,7 @@ import { AppComponent } from './appcomponent/app.component';
 import { ServicioService } from './servicio.service';
 import { InicioComponent } from './inicio/inicio.component';
 import { CarreraComponent } from './carrera/carrera.component';
+import { AsistenciaComponent } from './asistencia/asistencia.component';
 
 const appRoutes: Routes = 
 [
@@ -30,6 +31,10 @@ const appRoutes: Routes =
   {
     path: 'Carrera',
     component:CarreraComponent,
+  },
+  {
+    path: 'Asistencia',
+    component:AsistenciaComponent,
   }
 ]
 
@@ -38,6 +43,7 @@ const appRoutes: Routes =
     AppComponent,
     InicioComponent,
     CarreraComponent,
+    AsistenciaComponent,
   ],
   imports: [
     BrowserModule,
