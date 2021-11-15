@@ -20,8 +20,10 @@
     <h3><a routerLink="/Inicio">Inicio</a></h3>
     <div class="lista">
         <h2>Lista Asistencias</h2>
+        
         <form (ngSubmit)="consultarAsistencia(1)" [formGroup]="ListaAsistencias">
             <button type="submit" style="margin-right: 30px">Mostrar Asistencias</button>
+            <button (click)="LimpiarLista()" style="margin-right: 30px;">Limpiar</button>    
 
             <br><br><br><br>
 
@@ -51,6 +53,7 @@
                 </tbody>
             </table>
         </form>
+        
     </div>
 
     <!-- para mostrar el un solo Tipo de Documento -->

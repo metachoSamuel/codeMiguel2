@@ -5,20 +5,19 @@ var InformeModel = require('../modelos/informemodel')
 
 module.exports = function(){
 
-    router.get('/asistencia/:id', function(req, res){
-        var id = req.params.id
-
-        if(!isNaN(id)){
-            InformeModel.getInformeAsistencia(id, function(error, data){
-                if(typeof data !== 'undefined' && data.length > 0){
-                    res.status(200).json(data)
-                }else{
-                    res.json(404, {"msg":"No hay registro de asistencias entre las fechas"})
-                }
-            })
-        }else{
-            res.status(500).json({"msg":"No es un numero"})
+    router.post('/asistencia', function(req, res){
+        var parametros = {
+            id: req.body.id,
+            fechaInicio: req.body.fechaInicio,
+            fechaFin: req.body.fechaFin
         }
+        InformeModel.postInformeAsistencia(parametros, function(error, data){
+            if(data){
+                res.status(200).json(data)
+            }else{
+                res.status(500).send({error:"pailas"})
+            }
+        })
     })
 
     router.get('/prestamo/:id', function(req, res){

@@ -22,6 +22,7 @@
         <h2>Lista Prestamos</h2>
         <form (ngSubmit)="consultarPrestamo(1)" [formGroup]="ListaPrestamos">
             <button type="submit" style="margin-right: 30px">Mostrar Prestamos</button>
+            <button (click)="LimpiarLista()" style="margin-right: 30px;">Limpiar</button>
 
             <br><br><br><br>
 
