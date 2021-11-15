@@ -18,6 +18,7 @@
     <h3><a routerLink="/Inicio">Inicio</a></h3>
     <div class="lista">
         <h2>Lista Carreras</h2>
+        
         <form (ngSubmit)="consultaCarreras(1)" [formGroup]="ListaCarreras">
             <button type="submit" style="margin-right: 30px">Mostrar carreras</button>
             <button (click)="LimpiarLista()" style="scroll-margin-left: 30px">Limpiar lista</button>

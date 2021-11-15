@@ -3,40 +3,42 @@
 	margin: 0;
     box-sizing: border-box;
 }
-.titulo{
-	font-family: 'Franklin Gothic', sans-serif;
-	font-size: 50px;
-	margin: 1% 2%;
+.navbar {
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    background: rgba(0, 0, 0, 0.6) !important;
+    padding: 20px;
 }
-header{
-	width: 100%;
-	background: rgb(202, 202, 202);
-	overflow: hidden;
-	z-index: 100;
-	margin-bottom: 1%;
+
+.navbar .nav-item .nav-link {
+    color: #fff;
 }
-nav{
-    float: right;
-	margin-right: 2%;
-	margin-bottom: 4px;
+
+.navbar .nav-item .nav-link:hover {
+    color: #1ebba3;
 }
-nav ul li{
-    list-style: none;
-    margin-left: 25px;
-    float: left;
-    padding: 7px 5px;
-    position: relative;
+
+.heading-content {
+    position: absolute;
+    top: 35%;
+    width: 100%;
+    max-width: 100%;
 }
-nav ul li a{
-    text-decoration: none;
-	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-	font-size: 20px;
-    color: rgb(0, 24, 59);
-    font-weight: bold;
+
+.heading-content h5 {
+    font-size: 4em;
+    font-weight: 300;
+    color: #fff;
+    font-family: monospace;   
 }
-li:hover {
-	background-color: #fff;
-	border-radius: 4px;
+
+.heading-content h1 {
+    font-size: 4em;
+    font-weight: bolder;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .banner img{
