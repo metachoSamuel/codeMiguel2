@@ -44,9 +44,14 @@ export class ServicioService {
     return this.http.get(this.Url + "/carrera" + id, httpOptions);
   }
 
-  getAsistencia(): Observable<any>
+  getAsistencias(): Observable<any>
   {
     return this.http.get(this.Url + "/asistencia", httpOptions)
+  }
+
+  getAsistencia(id:any): Observable<any>
+  {
+    return this.http.get(this.Url + "/asistencia" + id, httpOptions);
   }
 
   getPrestamo(): Observable<any>

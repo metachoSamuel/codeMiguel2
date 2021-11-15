@@ -20,14 +20,35 @@
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" routerLink="/Inicio">Inicio</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/Carrera">Carreras</a>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                carreras
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" routerLink="/Carrera">Ver carreras</a></li>
+                <li><a class="dropdown-item" href="#">Alguna otra monda</a></li>
+                <li><hr class="dropdown-divider"></li>
+              </ul>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/Asistencia">Asistencias</a>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                asistencias
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" routerLink="/Asistencia">Ver asistencias</a></li>
+                <li><a class="dropdown-item" href="#">Informe</a></li>
+                <li><hr class="dropdown-divider"></li>
+              </ul>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/Prestamo">Prestamos</a>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                prestamos
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" routerLink="/Prestamo">Ver prestamos</a></li>
+                <li><a class="dropdown-item" href="#">Informe</a></li>
+                <li><hr class="dropdown-divider"></li>
+              </ul>
             </li>
           </ul>
           <form class="d-flex">

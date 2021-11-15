@@ -1,0 +1,2 @@
+npm install googleapis@39 --save
+npm install bootstrap jquery @popperjs/core

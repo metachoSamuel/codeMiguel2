@@ -27,7 +27,7 @@
 
             <br><br><br><br>
 
-            <h2>{{TituloAsistencias}}</h2>
+            <h2>{{TituloAsistencia}}</h2>
             <table>
                 <thead>
 
@@ -57,5 +57,55 @@
     </div>
 
     <!-- para mostrar el un solo Tipo de Documento -->
+    <div class="buscar">
+        <h2>Mostramos la Asistencia seleccionada: </h2>
+    
+        <form (ngSubmit)="buscarAsistencia()" [formGroup]="filtrarAsistencia">
+        Seleccione estudiante
+        <select class="dropdown"  formControlName="combofiltro" (click)="consultarAsistencia(2)">
+            <option value="value1">Asistencia a buscar</option>
+            <option *ngFor="let asistencia of comboListaAsistencia" [value]="asistencia.id_asistencia">
+                {{asistencia.id_asistencia}} - 
+                {{asistencia.nombre_1}} {{asistencia.apellido_1}}
+                {{asistencia.nombre_materia}} 
+            </option>
+        </select>    
+
+        <br><br>
+
+        <button type="submit" style="margin-right: 30px">Buscar Asistencias</button>
+        <button (click)="LimpiarLista()" style="margin-right: 30px;">Limpiar</button>    
+        </form>
+    
+        <ul>
+            <h2>{{TituloAsistencia}}</h2>
+    
+            <table class="tabBuscar"> 
+                <thead class="Colb">
+                <th class="b">{{TabBusAsistencia[0]}}</th> 
+                <th class="b">{{TabBusAsistencia[1]}}</th> 
+                <th class="b">{{TabBusAsistencia[2]}}</th> 
+                <th class="b">{{TabBusAsistencia[3]}}</th> 
+                <th class="b">{{TabBusAsistencia[4]}}</th> 
+                <th class="b">{{TabBusAsistencia[5]}}</th> 
+                </thead>
+        
+                <tbody class="Filb">  
+                    <tr class="b" *ngFor="let asistencia of MiAsistencia">
+                        <th> {{ asistencia.id_asistencia}} </th>
+                        <th> {{ asistencia.fecha}} </th>
+                        <th *ngIf="asistencia.estado==1"> Asistio </th>
+                        <th *ngIf="asistencia.estado==0"> No Asistio </th>
+                        <th> {{ asistencia.observaciones}} </th>
+                        <th> {{ asistencia.apellido_1}} {{ asistencia.nombre_1}} </th>
+                        <th> {{ asistencia.nombre_materia}} </th>
+                    </tr>
+                </tbody>         
+            </table>    
+        </ul>    
+        <br>    
+    </div>
+
+    
 
 </body>
