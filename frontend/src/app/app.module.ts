@@ -17,6 +17,7 @@ import { InicioComponent } from './inicio/inicio.component';
 import { CarreraComponent } from './carrera/carrera.component';
 import { AsistenciaComponent } from './asistencia/asistencia.component';
 import { PrestamoComponent } from './prestamo/prestamo.component';
+import { PersonaComponent } from './persona/persona.component';
 
 const appRoutes: Routes = 
 [
@@ -40,6 +41,10 @@ const appRoutes: Routes =
   {
     path: 'Prestamo',
     component:PrestamoComponent,
+  },
+  {
+    path: 'Persona',
+    component: PersonaComponent,
   }
 ]
 
@@ -50,6 +55,7 @@ const appRoutes: Routes =
     CarreraComponent,
     AsistenciaComponent,
     PrestamoComponent,
+    PersonaComponent,
   ],
   imports: [
     BrowserModule,
