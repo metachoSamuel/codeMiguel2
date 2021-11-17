@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { ServicioService } from '../servicio.service';
+import { ServicioService } from '../../services/servicio.service';
 
 
 @Component({

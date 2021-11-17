@@ -1,0 +1,16 @@
+.navbar {
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    background: rgba(0, 0, 0, 0.6) !important;
+    padding: 20px;
+}
+
+.navbar .nav-item .nav-link {
+    color: #fff;
+}
+
+.navbar .nav-item .nav-link:hover {
+    color: #1ebba3;
+}
