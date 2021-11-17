@@ -31,6 +31,7 @@ export class ServicioService {
     };
   }
 
+  //Carreras
   // Método Listar carreras
   getCarreras(): Observable<any>
   {
@@ -44,15 +45,40 @@ export class ServicioService {
     return this.http.get(this.Url + "/carrera" + id, httpOptions);
   }
 
-  getAsistencia(): Observable<any>
+
+  //Asistencias
+  getAsistencias(): Observable<any>
   {
     return this.http.get(this.Url + "/asistencia", httpOptions)
   }
 
+  getAsistencia(id:any): Observable<any>
+  {
+    return this.http.get(this.Url + "/asistencia" + id, httpOptions);
+  }
+
+
+  //Prestamos
   getPrestamo(): Observable<any>
   {
     return this.http.get(this.Url + "/prestamo", httpOptions)
   }
+
+
+  //-------------------------Persona-------------------------
+  //Listar Personas (CRUL)
+  getPersonas(): Observable<any>
+  {
+    return this.http.get(this.Url + "/persona", httpOptions)
+  }
+
+  //Leer Persona (CRUL)
+  getPersona(id: any): Observable<any>
+  {
+    return this.http.get(this.Url + "/persona"+id, httpOptions)
+  }
+
+
   /*
  // Método para insertar un nuevo Tipo de documento 
 

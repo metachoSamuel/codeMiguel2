@@ -12,36 +12,14 @@ import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './appcomponent/app.component';
-import { ServicioService } from './servicio.service';
-import { InicioComponent } from './inicio/inicio.component';
-import { CarreraComponent } from './carrera/carrera.component';
-import { AsistenciaComponent } from './asistencia/asistencia.component';
-import { PrestamoComponent } from './prestamo/prestamo.component';
+import { ServicioService } from './services/servicio.service';
+import { InicioComponent } from './pages/inicio/inicio.component';
+import { CarreraComponent } from './pages/carrera/carrera.component';
+import { AsistenciaComponent } from './pages/asistencia/asistencia.component';
+import { PrestamoComponent } from './pages/prestamo/prestamo.component';
+import { PersonaComponent } from './pages/persona/persona.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
-const appRoutes: Routes = 
-[
-  {
-    path: '',
-    pathMatch: 'prefix',
-    redirectTo: 'Inicio'
-  },
-  {
-    path: 'Inicio',
-    component:InicioComponent,
-  },
-  {
-    path: 'Carrera',
-    component:CarreraComponent,
-  },
-  {
-    path: 'Asistencia',
-    component:AsistenciaComponent,
-  },
-  {
-    path: 'Prestamo',
-    component:PrestamoComponent,
-  }
-]
 
 @NgModule({
   declarations: [
@@ -50,6 +28,8 @@ const appRoutes: Routes =
     CarreraComponent,
     AsistenciaComponent,
     PrestamoComponent,
+    PersonaComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,7 +37,7 @@ const appRoutes: Routes =
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    RouterModule.forRoot(appRoutes), // se agregan estos 
+    RouterModule,
     BrowserModule,
     HttpClientModule  // <- Agregar la clase
   ],

@@ -3,40 +3,26 @@
 	margin: 0;
     box-sizing: border-box;
 }
-.titulo{
-	font-family: 'Franklin Gothic', sans-serif;
-	font-size: 50px;
-	margin: 1% 2%;
+
+.heading-content {
+    position: absolute;
+    top: 35%;
+    width: 100%;
+    max-width: 100%;
 }
-header{
-	width: 100%;
-	background: rgb(202, 202, 202);
-	overflow: hidden;
-	z-index: 100;
-	margin-bottom: 1%;
+
+.heading-content h5 {
+    font-size: 4em;
+    font-weight: 300;
+    color: #fff;
+    font-family: monospace;   
 }
-nav{
-    float: right;
-	margin-right: 2%;
-	margin-bottom: 4px;
-}
-nav ul li{
-    list-style: none;
-    margin-left: 25px;
-    float: left;
-    padding: 7px 5px;
-    position: relative;
-}
-nav ul li a{
-    text-decoration: none;
-	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-	font-size: 20px;
-    color: rgb(0, 24, 59);
-    font-weight: bold;
-}
-li:hover {
-	background-color: #fff;
-	border-radius: 4px;
+
+.heading-content h1 {
+    font-size: 4em;
+    font-weight: bolder;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .banner img{
