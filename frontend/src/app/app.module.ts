@@ -21,6 +21,7 @@ import { PersonaComponent } from './pages/persona/persona.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +30,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     AsistenciaComponent,
     PrestamoComponent,
     PersonaComponent,
-    NavbarComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +40,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     HttpModule,
     RouterModule,
     BrowserModule,
-    HttpClientModule  // <- Agregar la clase
+    HttpClientModule
   ],
   providers: [ServicioService],
   bootstrap: [AppComponent]

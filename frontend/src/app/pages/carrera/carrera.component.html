@@ -2,7 +2,7 @@
     {{ title }}
 </h1>
 
-<div class="lista">
+<div class="container">
     <h2>Lista Carreras</h2>
 
     <form (ngSubmit)="consultarCarrera(1)" [formGroup]="ListaCarreras">
@@ -28,7 +28,7 @@
 
 <!-- para mostrar el un solo Tipo de Documento -->
 
-<div class="buscar">
+<div class="container">
     <h2>Mostramos la carrera seleccionada: </h2>
 
     <form (ngSubmit)="buscarCarrera()" [formGroup]="filtrarCarrera">
@@ -43,7 +43,8 @@
 
         <br><br>
 
-        <button type="submit">Buscar Carrera</button>
+        <button type="submit"  style="margin-right: 30px;">Buscar Carrera</button>
+        <button (click)="limpiarLista()">Limpiar</button>
     </form>
 
     <ul>
@@ -65,4 +66,38 @@
     </ul>
     <br>
 </div>
-<br><br><br><br>
+
+<button (click)="mostrarHtml(1)" class="btn btn-dark">Ingresar Carrera</button>
+<div class="container-fluid">
+    <br>
+    <form *ngIf="mostrarCrear" [formGroup]="formularioCarrera">
+        <label for="">Ingrese nombre carrera</label>
+        <input type="text" formControlName="nombre_carrera">
+        <br>
+        <button [disabled]="formularioCarrera.invalid" (click)="insertarCarrera()" class="btn btn-danger">Subir</button>
+        <br><br>
+        <button (click)="mostrarHtml(1)" class="btn btn-dark">Ocultar</button>
+    </form>
+    
+</div>
+<button (click)="mostrarHtml(2)" class="btn btn-dark">Actualizar carrera</button>
+<div class="container-fluid">
+    <br>
+    <form *ngIf="mostrarActualizar" [formGroup]="formularioActualizar">
+        Id de la carrera a actualizar
+        <select class="dropdown" formControlName="id_carrera" (click)="consultarCarrera(2)">
+            <option value="value1">Carrera a buscar</option>
+            <option *ngFor="let Carrera of comboListaCarrera" [value]="Carrera.id_carrera">
+                {{Carrera.id_carrera}} -
+                {{Carrera.nombre_carrera}}
+            </option>
+        </select>
+        <label for="">Ingrese nombre carrera</label>
+        <input type="text" formControlName="nombre_carrera">
+        <br>
+        <button [disabled]="formularioActualizar.invalid" (click)="actualizarCarrera()" class="btn btn-danger">Subir</button>
+        <br><br>
+        <button (click)="mostrarHtml(2)" class="btn btn-dark">Ocultar</button>
+    </form>
+    
+</div>
