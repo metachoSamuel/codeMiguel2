@@ -80,18 +80,7 @@ export class ServicioService {
   }
 
 
-  //-------------------------Persona-------------------------
-  //Listar Personas (CRUL)
-  getPersonas(): Observable<any>
-  {
-    return this.http.get(this.Url + "/persona", httpOptions)
-  }
-
-  //Leer Persona (CRUL)
-  getPersona(id: any): Observable<any>
-  {
-    return this.http.get(this.Url + "/persona"+id, httpOptions)
-  }
+  
 
 
   /*

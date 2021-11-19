@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { ServicioService } from '../../services/servicio.service';
+import { PersonaService } from '../../services/persona.service';
 
 
 @Component({
@@ -26,16 +26,102 @@ export class PersonaComponent implements OnInit {
   controlLista = 1;
   buscarEvalor = 1;
 
+  //Control formularios
+  mostrarCrear: boolean = false;
+  mostrarActualizar: boolean = false;
+
+  //FormGroup
+
   ListaPersonas = new FormGroup({});
+
   filtrarPersona = new FormGroup({
     combofiltro: new FormControl()
   });
 
+  formularioCrear = new FormGroup({
+    nombre_1: new FormControl('', Validators.required),
+    nombre_2: new FormControl('', Validators.required),
+    apellido_1: new FormControl('', Validators.required),
+    apellido_2: new FormControl('', Validators.required),
+    no_documento: new FormControl('', Validators.required),
+    tipo_persona: new FormControl('', Validators.required)
+  });
+
+  formularioActualizar = new FormGroup({
+    id_persona: new FormControl(),
+    nombre_1: new FormControl('',Validators.required),
+    nombre_2: new FormControl('',Validators.required),
+    apellido_1: new FormControl('',Validators.required),
+    apellido_2: new FormControl('',Validators.required),
+    no_documento: new FormControl('',Validators.required),
+    tipo_persona: new FormControl('',Validators.required)
+  });
+
+
+
   constructor(
     private formBuilder: FormBuilder,
-    private servi: ServicioService,
+    private servi: PersonaService,
     Router: Router
   ) { }
+
+
+  //Funcion para mostrar elementos en el html
+  public mostrarHtml(op: any) {
+    if (op == 1) {
+      if (this.mostrarCrear) {
+        this.mostrarCrear = false;
+      } else {
+        this.mostrarCrear = true;
+      }
+    } else {
+      if (this.mostrarActualizar) {
+        this.mostrarActualizar = false;
+      } else {
+        this.mostrarActualizar = true;
+      }
+    }
+  }
+
+  /**-----------CRUL---------------------------------- */
+  //Crear
+  public crearPersona() {
+    var dataPersona = this.formularioCrear.value;
+    this.servi.postPersona(dataPersona);
+
+  }
+
+  //Leer Persona
+  public buscarPersona() {
+    var filtrovalor = this.filtrarPersona.getRawValue()['combofiltro'];
+    if (this.controlLista == 1) {
+      this.servi.getPersona('/' + filtrovalor).subscribe((data: {}) => {
+        this.MiPersona = data;
+        this.TituloPersona = "Persona Seleccionada";
+        this.TabBusPersona[0] = "Indicador";
+        this.TabBusPersona[1] = "Apellidos";
+        this.TabBusPersona[2] = "Nombres";
+        this.TabBusPersona[3] = "numero de documento";
+        this.TabBusPersona[4] = "Tipo de usuario";
+
+      }, error => { console.error(error + " ") });
+    } else {
+      this.MiPersona = null;
+      this.TituloPersona = "";
+      this.TabBusPersona[0] = "";
+      this.TabBusPersona[1] = "";
+      this.TabBusPersona[2] = "";
+      this.TabBusPersona[3] = "";
+      this.TabBusPersona[4] = "";
+      this.controlLista = 1;
+    }
+  }
+
+  //Actualizar persona
+  public actualizarPersona() {
+    var dataPersona = this.formularioActualizar.value
+    this.servi.updatePersona(dataPersona)
+  }
 
   //Listar Personas
   public consultarPersona(op: any) {
@@ -72,36 +158,10 @@ export class PersonaComponent implements OnInit {
     }
   }
 
-  //Leer Persona
-  public buscarPersona() {
-    var filtrovalor = this.filtrarPersona.getRawValue()['combofiltro'];
-    if (this.controlLista == 1) {
-      this.servi.getPersona('/' + filtrovalor).subscribe((data: {}) => {
-        this.MiPersona = data;
-        this.TituloPersona = "Persona Seleccionada";
-        this.TabBusPersona[0] = "Indicador";
-        this.TabBusPersona[1] = "Apellidos";
-        this.TabBusPersona[2] = "Nombres";
-        this.TabBusPersona[3] = "numero de documento";
-        this.TabBusPersona[4] = "Tipo de usuario";
-
-      }, error => { console.error(error + " ") });
-    } else {
-      this.MiPersona = null;
-      this.TituloPersona = "";
-      this.TabBusPersona[0] = "";
-      this.TabBusPersona[1] = "";
-      this.TabBusPersona[2] = "";
-      this.TabBusPersona[3] = "";
-      this.TabBusPersona[4] = "";
-      this.controlLista = 1;
-    }
-  }
-
   public limpiarLista() {
     this.controlLista = 0;
   }
-  
+
 
   ngOnInit(): void {
   }

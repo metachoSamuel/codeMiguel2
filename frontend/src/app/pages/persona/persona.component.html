@@ -81,3 +81,71 @@
     </ul>
     <br>
 </div>
+
+<button (click)="mostrarHtml(1)" class="btn btn-dark">Crear Persona</button>
+<br>
+<div class="container-fluid">
+    <br>
+    <form *ngIf="mostrarCrear" [formGroup]="formularioCrear">
+        <label for="">Ingrese Primer nombre</label>
+        <input type="text" formControlName="nombre_1">
+        <br>
+        <label for="">Ingrese Primer nombre</label>
+        <input type="text" formControlName="nombre_2">
+        <br>
+        <label for="">Ingrese Primer nombre</label>
+        <input type="text" formControlName="apellido_1">
+        <br>
+        <label for="">Ingrese Primer nombre</label>
+        <input type="text" formControlName="apellido_2">
+        <br><br>
+        <label for="">Ingrese Primer nombre</label>
+        <input type="text" formControlName="no_documento">
+        <br><br>
+        <label for="">Ingrese Primer nombre</label>
+        <input type="text" formControlName="tipo_persona">
+        <br><br>
+        <button [disabled]="formularioCrear.invalid" (click)="crearPersona()" class="btn btn-danger">Subir</button>
+        <br><br>
+        <button (click)="mostrarHtml(1)" class="btn btn-dark">Ocultar</button>
+        
+    </form>
+</div>
+<button (click)="mostrarHtml(2)" class="btn btn-dark">Actualizar</button>
+<br>
+<div class="container-fluid">
+    <br>
+    <form *ngIf="mostrarActualizar" [formGroup]="formularioActualizar">
+        id de la persona a actualizar
+        <select class="dropdown" formControlName="id_persona" (click)="consultarPersona(2)">
+            <option value="value1">Id a buscar</option>
+            <option *ngFor="let persona of comboListaPersona" [value]="persona.id_persona">
+                {{persona.id_persona}} -
+                {{persona.nombre_1}}
+            </option>
+        </select>
+        <label for="">Ingrese Primer nombre</label>
+        <input type="text" formControlName="nombre_1">
+        <br>
+        <label for="">Ingrese Primer nombre</label>
+        <input type="text" formControlName="nombre_2">
+        <br>
+        <label for="">Ingrese Primer nombre</label>
+        <input type="text" formControlName="apellido_1">
+        <br>
+        <label for="">Ingrese Primer nombre</label>
+        <input type="text" formControlName="apellido_2">
+        <br><br>
+        <label for="">Ingrese Primer nombre</label>
+        <input type="text" formControlName="no_documento">
+        <br><br>
+        <label for="">Ingrese Primer nombre</label>
+        <input type="text" formControlName="tipo_persona">
+        <br><br>
+        <button [disabled]="formularioActualizar.invalid" (click)="actualizarPersona()" class="btn btn-danger">Subir</button>
+        <br><br>
+        <button (click)="mostrarHtml(2)" class="btn btn-dark">Ocultar</button>
+        
+    </form>
+</div>
+
