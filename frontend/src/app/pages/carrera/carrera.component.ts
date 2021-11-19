@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { debounceTime } from 'rxjs/operators';
 
 import { ServicioService } from '../../services/servicio.service';
 
@@ -10,9 +11,12 @@ import { ServicioService } from '../../services/servicio.service';
   styleUrls: ['./carrera.component.css']
 })
 export class CarreraComponent implements OnInit {
+
   Carreras: any = [];              //Lista carreras
   TituloCarreras = "";             //Titulo Lista de carreras
   TablaCarreras: any = [];        //Encabezados tabla Lista de carreras 
+
+  datos: any = [];
 
   TituloCarrera = "";              //Titulo de carrera buscada
   MiCarrera: any = [];             //Carrera buscada
@@ -21,7 +25,13 @@ export class CarreraComponent implements OnInit {
 
   title = "Manejo Carreras";
   controlLista = 1;
-  BuscarEvalor = 1;               //Control para carga del valor a buscar
+  BuscarEvalor = 1;
+
+  /*Control de formularios*/
+  mostrarCrear: Boolean = false;
+  mostrarActualizar: Boolean = false;
+
+
 
   //Form group
   ListaCarreras = new FormGroup(
@@ -36,15 +46,73 @@ export class CarreraComponent implements OnInit {
     }
   );
 
+  formularioCarrera = new FormGroup({
+    nombre_carrera: new FormControl('', Validators.required)
+  });
+
+  formularioActualizar = new FormGroup({
+    id_carrera: new FormControl(),
+    nombre_carrera: new FormControl('', Validators.required)
+  })
+
   constructor(
     private formBuilder: FormBuilder,
     private servi: ServicioService,
     Router: Router
   ) { }
 
+  //Funcion para mostrar elementos en el html
+  mostrarHtml(op:any) {
+    if (op==1){
+      if (this.mostrarCrear) {
+        this.mostrarCrear = false;
+      } else {
+        this.mostrarCrear = true;
+      }
+    }else{
+      if (this.mostrarActualizar) {
+        this.mostrarActualizar = false;
+      } else {
+        this.mostrarActualizar = true;
+      }
+    }
+  }
 
 
-  //Listar Personas
+  //Crear Carrera
+  public insertarCarrera() {
+    var dataCarrera = this.formularioCarrera.value
+    this.servi.insertCarrera(dataCarrera)
+  }
+
+  //Leer Carrera
+  public buscarCarrera() {
+    var filtrovalor = this.filtrarCarrera.getRawValue()['combofiltro'];
+    if (this.controlLista == 1) {
+      this.servi.getCarrera('/' + filtrovalor).subscribe((data: {}) => {
+        this.MiCarrera = data;
+        this.TituloCarrera = "Carrera Seleccionada";
+        this.TabBusCarrera[0] = "Indicador";
+        this.TabBusCarrera[1] = "Nombre";
+
+      }, error => { console.error(error + " ") });
+    } else {
+      this.MiCarrera = null;
+      this.TituloCarrera = "";
+      this.TabBusCarrera[0] = "";
+      this.TabBusCarrera[1] = "";
+      this.controlLista = 1;
+    }
+  }
+
+  //Actualizar Carrera
+  public actualizarCarrera() {
+    var dataCarrera = this.formularioActualizar.value
+    console.log(dataCarrera)
+    this.servi.updateCarrera(dataCarrera)
+  }
+
+  //Listar Carrera
   public consultarCarrera(op: any) {
     if (this.controlLista == 1) {
       this.servi.getCarreras().subscribe((data: any) => {
@@ -66,26 +134,6 @@ export class CarreraComponent implements OnInit {
       this.TituloCarreras = "";
       this.TablaCarreras[0] = "";
       this.TablaCarreras[1] = "";
-      this.controlLista = 1;
-    }
-  }
-
-  //Leer Persona
-  public buscarCarrera() {
-    var filtrovalor = this.filtrarCarrera.getRawValue()['combofiltro'];
-    if (this.controlLista == 1) {
-      this.servi.getCarrera('/' + filtrovalor).subscribe((data: {}) => {
-        this.MiCarrera = data;
-        this.TituloCarrera = "Carrera Seleccionada";
-        this.TabBusCarrera[0] = "Indicador";
-        this.TabBusCarrera[1] = "Nombre";
-
-      }, error => { console.error(error + " ") });
-    } else {
-      this.MiCarrera = null;
-      this.TituloCarrera = "";
-      this.TabBusCarrera[0] = "";
-      this.TabBusCarrera[1] = "";
       this.controlLista = 1;
     }
   }
