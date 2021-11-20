@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { AsistenciaService } from 'src/app/services/asistencia.service';
 import { PersonaService } from 'src/app/services/persona.service';
 
+
 @Component({
   selector: 'app-asistencia',
   templateUrl: './asistencia.component.html',
@@ -26,6 +27,8 @@ export class AsistenciaComponent implements OnInit {
   title = "Manejo Asistencias";
   controlLista = 1;
   BuscarEvalor = 1;
+
+  listaPersonas:any = [];
 
   //Control formularios
   mostrarCrear: boolean = false;
@@ -58,6 +61,7 @@ export class AsistenciaComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private servi: AsistenciaService,
+    private servicioPersona: PersonaService,
     Router: Router
   ) { }
 
@@ -157,6 +161,11 @@ export class AsistenciaComponent implements OnInit {
     }
   }
 
+  public obtenerPersonas() {
+    this.servicioPersona.getPersonas().subscribe((data:any)=>{
+      this.listaPersonas = data
+    })
+  }
 
   public LimpiarLista() {
     this.controlLista = 0;

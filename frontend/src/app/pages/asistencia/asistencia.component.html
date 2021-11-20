@@ -97,12 +97,13 @@
         <input type="text" fromControlName="observaciones">
         <br>
         <label for="">Persona</label>
-        <select class="dropdown" formControlName="id_asistencia" (click)="consultarAsistencia(2)">
+        
+        <select class="dropdown" formControlName="id_persona" (click)="obtenerPersonas()">
             <option value="value1">Id a buscar</option>
-            <option *ngFor="let asistencia of comboListaAsistencia" [value]="asistencia.id_asistencia">
-                {{asistencia.id_asistencia}} - 
-                {{asistencia.apellido_1}}
-                {{asistencia.nombre_1}}
+            <option *ngFor="let persona of listaPersonas" [value]="persona.id_persona">
+                {{persona.id_persona}} - 
+                {{persona.apellido_1}}
+                {{persona.nombre_1}}
             </option>
         </select>
         <br>
