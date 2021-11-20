@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { ServicioService } from '../../services/servicio.service';
+import { AsistenciaService } from 'src/app/services/asistencia.service';
+import { PersonaService } from 'src/app/services/persona.service';
 
 
 @Component({
@@ -27,6 +28,12 @@ export class AsistenciaComponent implements OnInit {
   controlLista = 1;
   BuscarEvalor = 1;
 
+  listaPersonas:any = [];
+
+  //Control formularios
+  mostrarCrear: boolean = false;
+  mostrarActualizar: boolean = false;
+
   //form group
   ListaAsistencias = new FormGroup({});
 
@@ -34,12 +41,89 @@ export class AsistenciaComponent implements OnInit {
     combofiltro: new FormControl()
   });
 
+  formularioCrear = new FormGroup({
+    //fecha: new FormControl(new Date().getDate, Validators.required, ),
+    observaciones: new FormControl('', Validators.required),
+    id_persona: new FormControl('', Validators.required),
+    estado: new FormControl('', Validators.required),
+    id_materia: new FormControl('', Validators.required)
+  });
+  
+  formularioActualizar = new FormGroup({
+    id_asistencia: new FormControl('', Validators.required),
+    fecha: new FormControl(''),
+    observaciones: new FormControl(''),
+    id_persona: new FormControl('' ),
+    estado: new FormControl(''),
+    id_materia: new FormControl('')
+  });
+
   constructor(
     private formBuilder: FormBuilder,
-    private servi: ServicioService,
+    private servi: AsistenciaService,
+    private servicioPersona: PersonaService,
     Router: Router
   ) { }
 
+  //Funcion para mostrar elementos en el html
+  public mostrarHtml(op: any) {
+    if (op == 1) {
+      if (this.mostrarCrear) {
+        this.mostrarCrear = false;
+      } else {
+        this.mostrarCrear = true;
+      }
+    } else {
+      if (this.mostrarActualizar) {
+        this.mostrarActualizar = false;
+      } else {
+        this.mostrarActualizar = true;
+      }
+    }
+  }
+
+  /**-----------CRUL---------------------------------- */
+  //Crear
+  public crearAsistencia() {
+    var dataAsistencia = this.formularioCrear.value;
+    this.servi.postAsistencia(dataAsistencia);
+  }
+
+  //Leer
+  public buscarAsistencia() {
+    var filtrovalor = this.filtrarAsistencia.getRawValue()['combofiltro'];
+    if (this.controlLista == 1) {
+      this.servi.getAsistencia('/' + filtrovalor).subscribe((data: {}) => {
+        this.MiAsistencia = data;
+        this.TituloAsistencia = "Asistencia seleccionada";
+        this.TabBusAsistencia[0] = "indicador";
+        this.TabBusAsistencia[1] = "fecha";
+        this.TabBusAsistencia[2] = "estado";
+        this.TabBusAsistencia[3] = "observaciones";
+        this.TabBusAsistencia[4] = "estudiante";
+        this.TabBusAsistencia[5] = "Materia";
+      }, error => { console.log(error) });
+    } else {
+      this.MiAsistencia = null;
+      this.TituloAsistencia = "";
+      this.TabBusAsistencia[0] = "";
+      this.TabBusAsistencia[1] = "";
+      this.TabBusAsistencia[2] = "";
+      this.TabBusAsistencia[3] = "";
+      this.TabBusAsistencia[4] = "";
+      this.TabBusAsistencia[5] = "";
+      this.controlLista=1;
+    }
+
+  }
+
+  //Actualizar
+  public actualizarAsistencia() {
+    var dataAsistencia = this.formularioActualizar.value;
+    this.servi.updateAsistencia(dataAsistencia);
+  }
+  
+  //Listar
   public consultarAsistencia(op: any) {
     if (this.controlLista == 1) {
       this.servi.getAsistencias().subscribe((data: any) => {
@@ -77,36 +161,16 @@ export class AsistenciaComponent implements OnInit {
     }
   }
 
+  public obtenerPersonas() {
+    this.servicioPersona.getPersonas().subscribe((data:any)=>{
+      this.listaPersonas = data
+    })
+  }
+
   public LimpiarLista() {
     this.controlLista = 0;
   }
 
-  public buscarAsistencia() {
-    var filtrovalor = this.filtrarAsistencia.getRawValue()['combofiltro'];
-    if (this.controlLista == 1) {
-      this.servi.getAsistencia('/' + filtrovalor).subscribe((data: {}) => {
-        this.MiAsistencia = data;
-        this.TituloAsistencia = "Asistencia seleccionada";
-        this.TabBusAsistencia[0] = "indicador";
-        this.TabBusAsistencia[1] = "fecha";
-        this.TabBusAsistencia[2] = "estado";
-        this.TabBusAsistencia[3] = "observaciones";
-        this.TabBusAsistencia[4] = "estudiante";
-        this.TabBusAsistencia[5] = "Materia";
-      }, error => { console.log(error) });
-    } else {
-      this.MiAsistencia = null;
-      this.TituloAsistencia = "";
-      this.TabBusAsistencia[0] = "";
-      this.TabBusAsistencia[1] = "";
-      this.TabBusAsistencia[2] = "";
-      this.TabBusAsistencia[3] = "";
-      this.TabBusAsistencia[4] = "";
-      this.TabBusAsistencia[5] = "";
-      this.controlLista=1;
-    }
-
-  }
 
   ngOnInit(): void {
   }

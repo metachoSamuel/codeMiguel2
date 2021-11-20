@@ -85,6 +85,53 @@
     </ul>
     <br>
 </div>
-<form>
-    <input type="date">
-</form>
+
+<button (click)="mostrarHtml(1)" class="btn btn-dark">Ingresar Asistencia</button>
+<div class="container-fluid">
+    <br>
+    <form *ngIf="mostrarCrear" [formGroup]="formularioCrear">
+        <label for="">Ingrese</label>
+        <input type="date" formControlName="fecha">
+        <br>
+        <label for="">Observaciones</label>
+        <input type="text" fromControlName="observaciones">
+        <br>
+        <label for="">Persona</label>
+        
+        <select class="dropdown" formControlName="id_persona" (click)="obtenerPersonas()">
+            <option value="value1">Id a buscar</option>
+            <option *ngFor="let persona of listaPersonas" [value]="persona.id_persona">
+                {{persona.id_persona}} - 
+                {{persona.apellido_1}}
+                {{persona.nombre_1}}
+            </option>
+        </select>
+        <br>
+        <button [disabled]="formularioCrear.invalid" (click)="crearAsistencia()" class="btn btn-danger">Subir</button>
+        <br><br>
+        <button (click)="mostrarHtml(1)" class="btn btn-dark">Ocultar</button>
+    </form>
+</div>
+
+<button (click)="mostrarHtml(2)" class="btn btn-dark">Actualizar Asistencia</button>
+<div class="container-fluid">
+    <br>
+    <form *ngIf="mostrarActualizar" [formGroup]="formularioActualizar">
+        id de la 
+        <select class="dropdown" formControlName="id_asistencia" (click)="consultarAsistencia(2)">
+            <option value="value1">Id a buscar</option>
+            <option *ngFor="let asistencia of comboListaAsistencia" [value]="asistencia.id_asistencia">
+                {{asistencia.id_asistencia}} - 
+                {{asistencia.apellido_1}}
+                {{asistencia.nombre_1}}
+            </option>
+        </select>
+        <label for="">Ingrese</label>
+        <input type="text" formControlName="fecha">
+        <br>
+        <button [disabled]="formularioActualizar.invalid" (click)="actualizarAsistencia()" class="btn btn-danger">Subir</button>
+        <br><br>
+        <button (click)="mostrarHtml(2)" class="btn btn-dark">Ocultar</button>
+    </form>
+    
+</div>
