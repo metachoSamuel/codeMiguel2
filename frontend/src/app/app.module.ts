@@ -19,7 +19,7 @@ import { AsistenciaComponent } from './pages/asistencia/asistencia.component';
 import { PrestamoComponent } from './pages/prestamo/prestamo.component';
 import { PersonaComponent } from './pages/persona/persona.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-
+import { FooterComponent } from './components/footer/footer.component';
 
 
 @NgModule({
@@ -30,7 +30,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     AsistenciaComponent,
     PrestamoComponent,
     PersonaComponent,
-    NavbarComponent
+    NavbarComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

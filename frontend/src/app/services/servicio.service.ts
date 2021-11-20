@@ -60,18 +60,6 @@ export class ServicioService {
     });
   }
 
-//---------------------------Asistencias---------------------------//
-  //Asistencias
-  getAsistencias(): Observable<any>
-  {
-    return this.http.get(this.Url + "/asistencia", httpOptions)
-  }
-
-  getAsistencia(id:any): Observable<any>
-  {
-    return this.http.get(this.Url + "/asistencia" + id, httpOptions);
-  }
-
 
   //Prestamos
   getPrestamo(): Observable<any>
