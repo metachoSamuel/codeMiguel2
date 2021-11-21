@@ -110,7 +110,7 @@ export class MateriaComponent implements OnInit {
   }
 
   //Listar
-  public consultarCarrera(op: any) {
+  public consultarMateria(op: any) {
     if(this.controlLista == 1) {
       this.servi.getMaterias().subscribe((data: any)=>{
         if (op == 1) {
