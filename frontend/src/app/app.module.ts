@@ -21,6 +21,7 @@ import { PersonaComponent } from './pages/persona/persona.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { MateriaComponent } from './pages/materia/materia.component';
+import { AudioVisualComponent } from './pages/audio-visual/audio-visual.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { MateriaComponent } from './pages/materia/materia.component';
     PersonaComponent,
     NavbarComponent,
     FooterComponent,
-    MateriaComponent
+    MateriaComponent,
+    AudioVisualComponent
   ],
   imports: [
     BrowserModule,
