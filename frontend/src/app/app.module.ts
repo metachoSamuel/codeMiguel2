@@ -20,6 +20,7 @@ import { PrestamoComponent } from './pages/prestamo/prestamo.component';
 import { PersonaComponent } from './pages/persona/persona.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { MateriaComponent } from './pages/materia/materia.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { FooterComponent } from './components/footer/footer.component';
     PrestamoComponent,
     PersonaComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    MateriaComponent
   ],
   imports: [
     BrowserModule,

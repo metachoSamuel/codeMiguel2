@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AsistenciaComponent } from './pages/asistencia/asistencia.component';
 import { CarreraComponent } from './pages/carrera/carrera.component';
 import { InicioComponent } from './pages/inicio/inicio.component';
+import { MateriaComponent } from './pages/materia/materia.component';
 import { PersonaComponent } from './pages/persona/persona.component';
 import { PrestamoComponent } from './pages/prestamo/prestamo.component';
 
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path: 'asistencia', component: AsistenciaComponent,},
   {path: 'prestamo', component: PrestamoComponent,},
   {path: 'persona', component: PersonaComponent,},
+  {path: 'materia', component: MateriaComponent },
   {path: '**', pathMatch: 'full', redirectTo: 'inicio' }
 ];
 

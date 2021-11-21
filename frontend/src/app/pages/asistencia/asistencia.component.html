@@ -23,8 +23,8 @@
                 <tr *ngFor="let asistencia of Asistencias">
                     <th> {{ asistencia.id_asistencia}} </th>
                     <th> {{ asistencia.fecha}} </th>
-                    <th *ngIf="asistencia.estado==1"> Asistio </th>
-                    <th *ngIf="asistencia.estado==0"> No Asistio </th>
+                    <th *ngIf="asistencia.estado==0"> Asistio </th>
+                    <th *ngIf="asistencia.estado==1"> No Asistio </th>
                     <th> {{ asistencia.observaciones}} </th>
                     <th> {{ asistencia.apellido_1}} {{ asistencia.nombre_1}} </th>
                     <th> {{ asistencia.nombre_materia}} </th>
@@ -94,10 +94,9 @@
         <input type="date" formControlName="fecha">
         <br>
         <label for="">Observaciones</label>
-        <input type="text" fromControlName="observaciones">
+        <input type="text" formControlName="observaciones">
         <br>
         <label for="">Persona</label>
-        
         <select class="dropdown" formControlName="id_persona" (click)="obtenerPersonas()">
             <option value="value1">Id a buscar</option>
             <option *ngFor="let persona of listaPersonas" [value]="persona.id_persona">
@@ -107,7 +106,19 @@
             </option>
         </select>
         <br>
-        <button [disabled]="formularioCrear.invalid" (click)="crearAsistencia()" class="btn btn-danger">Subir</button>
+        <label for="">Estado</label>
+        <input type="text" formControlName="estado">
+        <br>
+        <label for="">Materia</label>
+        <select class="dropdown" formControlName="id_materia" (click)="obtenerMaterias()">
+            <option value="value1">Id a buscar</option>
+            <option *ngFor="let materia of listaMaterias" [value]="materia.id_materia">
+                {{materia.id_materia}} - 
+                {{materia.nombre_materia}}
+            </option>
+        </select>
+        <br>
+        <button  (click)="crearAsistencia()" class="btn btn-danger">Subir</button>
         <br><br>
         <button (click)="mostrarHtml(1)" class="btn btn-dark">Ocultar</button>
     </form>
@@ -127,7 +138,32 @@
             </option>
         </select>
         <label for="">Ingrese</label>
-        <input type="text" formControlName="fecha">
+        <input type="date" formControlName="fecha">
+        <br>
+        <label for="">Observaciones</label>
+        <input type="text" formControlName="observaciones">
+        <br>
+        <label for="">Persona</label>
+        <select class="dropdown" formControlName="id_persona" (click)="obtenerPersonas()">
+            <option value="value1">Id a buscar</option>
+            <option *ngFor="let persona of listaPersonas" [value]="persona.id_persona">
+                {{persona.id_persona}} - 
+                {{persona.apellido_1}}
+                {{persona.nombre_1}}
+            </option>
+        </select>
+        <br>
+        <label for="">Estado</label>
+        <input type="text" formControlName="estado">
+        <br>
+        <label for="">Materia</label>
+        <select class="dropdown" formControlName="id_materia" (click)="obtenerMaterias()">
+            <option value="value1">Id a buscar</option>
+            <option *ngFor="let materia of listaMaterias" [value]="materia.id_materia">
+                {{materia.id_materia}} - 
+                {{materia.nombre_materia}}
+            </option>
+        </select>
         <br>
         <button [disabled]="formularioActualizar.invalid" (click)="actualizarAsistencia()" class="btn btn-danger">Subir</button>
         <br><br>

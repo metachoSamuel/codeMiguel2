@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 
 import { AsistenciaService } from 'src/app/services/asistencia.service';
 import { PersonaService } from 'src/app/services/persona.service';
+import { MateriaService } from 'src/app/services/materia.service';
 
 
 @Component({
@@ -29,6 +30,7 @@ export class AsistenciaComponent implements OnInit {
   BuscarEvalor = 1;
 
   listaPersonas:any = [];
+  listaMaterias:any = [];
 
   //Control formularios
   mostrarCrear: boolean = false;
@@ -42,11 +44,12 @@ export class AsistenciaComponent implements OnInit {
   });
 
   formularioCrear = new FormGroup({
-    //fecha: new FormControl(new Date().getDate, Validators.required, ),
-    observaciones: new FormControl('', Validators.required),
-    id_persona: new FormControl('', Validators.required),
-    estado: new FormControl('', Validators.required),
-    id_materia: new FormControl('', Validators.required)
+    fecha: new FormControl(new Date()),
+    observaciones: new FormControl(''),
+    id_persona: new FormControl(''),
+    estado: new FormControl(''),
+    id_materia: new FormControl('')
+
   });
   
   formularioActualizar = new FormGroup({
@@ -62,6 +65,7 @@ export class AsistenciaComponent implements OnInit {
     private formBuilder: FormBuilder,
     private servi: AsistenciaService,
     private servicioPersona: PersonaService,
+    private servicioMateria: MateriaService,
     Router: Router
   ) { }
 
@@ -86,7 +90,7 @@ export class AsistenciaComponent implements OnInit {
   //Crear
   public crearAsistencia() {
     var dataAsistencia = this.formularioCrear.value;
-    this.servi.postAsistencia(dataAsistencia);
+    this.servi.postAsistencia(dataAsistencia)
   }
 
   //Leer
@@ -163,7 +167,13 @@ export class AsistenciaComponent implements OnInit {
 
   public obtenerPersonas() {
     this.servicioPersona.getPersonas().subscribe((data:any)=>{
-      this.listaPersonas = data
+      this.listaPersonas = data;
+    })
+  }
+
+  public obtenerMaterias() {
+    this.servicioMateria.getMaterias().subscribe((data:any)=>{
+      this.listaMaterias = data;
     })
   }
 

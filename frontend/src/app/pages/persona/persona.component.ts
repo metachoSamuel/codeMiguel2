@@ -88,7 +88,7 @@ export class PersonaComponent implements OnInit {
   public crearPersona() {
     var dataPersona = this.formularioCrear.value;
     this.servi.postPersona(dataPersona);
-
+    
   }
 
   //Leer Persona
