@@ -3,16 +3,16 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { Observable, of } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
 
+
 const httpOptions =
 {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 
-
 @Injectable({
   providedIn: 'root'
 })
-export class AsistenciaService {
+export class MateriaService {
 
   private Url: string = 'http://localhost:3000';
   constructor(private http: HttpClient) { }
@@ -24,6 +24,7 @@ export class AsistenciaService {
     //console.log("23 A " + body);
     return body || {};
   }
+
   private handleError<T>(operation = 'operation', result?: T) {
     //console.log(" ggggg ");
     return (error: any): Observable<T> => {
@@ -32,28 +33,28 @@ export class AsistenciaService {
     };
   }
 
-  //-------------------------Asistencia-------------------------
-  //Listar asistencias
-  getAsistencias(): Observable<any>
+  //-------------------------Materias-------------------------
+  //Listar Materia (CRUL)
+  getMaterias(): Observable<any>
   {
-    return this.http.get(this.Url + "/asistencia", httpOptions)
+    return this.http.get(this.Url + "/materia", httpOptions)
   }
 
-  //Leer
-  getAsistencia(id:any): Observable<any>
+  //Leer Persona (CRUL)
+  getMateria(id: any): Observable<any>
   {
-    return this.http.get(this.Url + "/asistencia"+id, httpOptions)
+    return this.http.get(this.Url + "/materia"+id, httpOptions)
   }
 
-  //Crear
-  async postAsistencia(data:{}) :Promise<any>
+  //Crear Persona (CRUL)
+  async postMateria(data:{}): Promise<any>
   {
-    return this.http.post(this.Url + "/asistencia", data, httpOptions).toPromise()
+    return this.http.post(this.Url + "/materia", data, httpOptions).toPromise()
   }
 
-  //Actualizar 
-  async updateAsistencia(data:{}): Promise<any>
+  //Actualizar Persona (CRUL)
+  async updateMateria(data:{}):Promise<any>
   {
-    return this.http.put(this.Url + "/asistencia", data, httpOptions).toPromise()
+    return this.http.put(this.Url+ "/materia", data, httpOptions).toPromise()
   }
 }

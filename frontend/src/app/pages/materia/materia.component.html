@@ -1,0 +1,126 @@
+<div class="lista">
+    <h2>Lista Materias</h2>
+
+    <form (ngSubmit)="consultarMateria(1)" [formGroup]="listaMaterias">
+        <button type="submit" style="margin-right: 30px">Mostrar Asistencias</button>
+        <button (click)="limpiarLista()" style="margin-right: 30px;">Limpiar</button>
+
+        <br><br><br><br>
+
+        <h2>{{TituloMaterias}}</h2>
+        <table>
+            <thead>
+
+                <th>{{TablaMateria[0]}}</th>
+                <th>{{TablaMateria[1]}}</th>
+                <th>{{TablaMateria[2]}}</th>
+
+            </thead>
+            <tbody>
+                <tr *ngFor="let materia of Materias">
+                    <th> {{ materia.id_materia}} </th>
+                    <th> {{ materia.nombre_materia}} </th>
+                    <th> {{ materia.nombre_carrera}} </th>
+
+                </tr>
+            </tbody>
+        </table>
+    </form>
+
+</div>
+
+<!-- para mostrar el un solo Tipo de Documento -->
+<div class="buscar">
+    <h2>Mostramos la Materia seleccionada: </h2>
+
+    <form (ngSubmit)="buscarMateria()" [formGroup]="filtrarMateria">
+        Seleccione Materia
+        <select class="dropdown" formControlName="combofiltro" (click)="consultarMateria(2)">
+            <option value="value1">Materia a buscar</option>
+            <option *ngFor="let materia of comboListaMateria" [value]="materia.id_materia">
+                {{materia.id_materia}} -
+                {{materia.nombre_materia}}
+            </option>
+        </select>
+
+        <br><br>
+
+        <button type="submit" style="margin-right: 30px">Buscar Materia</button>
+        <button (click)="limpiarLista()" style="margin-right: 30px;">Limpiar</button>
+    </form>
+
+    <ul>
+        <h2>{{TituloMateria}}</h2>
+
+        <table class="tabBuscar">
+            <thead class="Colb">
+                <th class="b">{{TabBusMateria[0]}}</th>
+                <th class="b">{{TabBusMateria[1]}}</th>
+                <th class="b">{{TabBusMateria[2]}}</th>
+            </thead>
+
+            <tbody class="Filb">
+                <tr class="b" *ngFor="let materia of MiMateria">
+                    <th> {{ materia.id_materia}} </th>
+                    <th> {{ materia.nombre_materia}} </th>
+                    <th> {{ materia.nombre_carrera}} </th>
+                </tr>
+            </tbody>
+        </table>
+    </ul>
+    <br>
+</div>
+
+<button (click)="mostrarHtml(1)" class="btn btn-dark">Ingresar Materia</button>
+<div class="container-fluid">
+    <br>
+    <form *ngIf="mostrarCrear" [formGroup]="formularioCrear">
+        <label for="">Ingrese nombre de la materia</label>
+        <input type="text" formControlName="nombre_materia">
+        <br>
+        <label for="">carrera</label>
+        <select class="dropdown" formControlName="id_carrera" (click)="obtenerCarrera()">
+            <option value="value1">Id a buscar</option>
+            <option *ngFor="let carrera of listaCarreras" [value]="carrera.id_carrera">
+                {{carrera.id_carrera}} - 
+                {{carrera.nombre_carrera}}
+            </option>
+        </select>
+        <br>
+        <button [disabled]="formularioCrear.invalid" (click)="crearMateria()" class="btn btn-danger">Subir</button>
+        <br><br>
+        <button (click)="mostrarHtml(1)" class="btn btn-dark">Ocultar</button>
+    </form>
+    
+</div>
+<button (click)="mostrarHtml(2)" class="btn btn-dark">Actualizar carrera</button>
+<div class="container-fluid">
+    <br>
+    <form *ngIf="mostrarActualizar" [formGroup]="formularioActualizar">
+        Id de la materia a actualizar
+        <select class="dropdown" formControlName="id_materia" (click)="consultarMateria(2)">
+            <option value="value1">Carrera a buscar</option>
+            <option *ngFor="let materia of comboListaMateria" [value]="materia.id_materia">
+                {{materia.id_materia}} -
+                {{materia.nombre_materia}}
+            </option>
+        </select>
+        <br>
+        <label for="">Ingrese nombre materia</label>
+        <input type="text" formControlName="nombre_materia">
+        <br>
+        <label for="">carrera</label>
+        <select class="dropdown" formControlName="id_carrera" (click)="obtenerCarrera()">
+            <option value="value1">Id a buscar</option>
+            <option *ngFor="let carrera of listaCarreras" [value]="carrera.id_carrera">
+                {{carrera.id_carrera}} - 
+                {{carrera.nombre_carrera}}
+            </option>
+        </select>
+        <br>
+        <button [disabled]="formularioActualizar.invalid" (click)="actualizarMateria()" class="btn btn-danger">Subir</button>
+        <br><br>
+        <button (click)="mostrarHtml(2)" class="btn btn-dark">Ocultar</button>
+    </form>
+    
+</div>
