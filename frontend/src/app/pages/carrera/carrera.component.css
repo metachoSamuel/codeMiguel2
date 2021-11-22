@@ -1,0 +1,15 @@
+table{
+    width: 35%;
+    text-align: center;
+    text-transform: uppercase;
+}
+thead{
+    background-color: #00adad;
+}
+table th{
+    color: #fff;
+    border-color: black;
+}
+table tr{
+    width: 50px;
+}

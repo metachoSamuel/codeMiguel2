@@ -1,56 +1,57 @@
 <h1>
     {{ title }}
 </h1>
+<br>
 
 <div class="container">
-    <h2>Lista Carreras</h2>
+    <div class="listaCarreras">
+        <form (ngSubmit)="consultarCarrera(1)" [formGroup]="ListaCarreras">
+            <button type="submit" style="margin-right: 30px">Mostrar carreras</button>
+            <button (click)="limpiarLista()" style="scroll-margin-left: 30px">Limpiar lista</button>
+            <br><br>
 
-    <form (ngSubmit)="consultarCarrera(1)" [formGroup]="ListaCarreras">
-        <button type="submit" style="margin-right: 30px">Mostrar carreras</button>
-        <button (click)="limpiarLista()" style="scroll-margin-left: 30px">Limpiar lista</button>
-        <br><br><br><br>
+            <h2>{{TituloCarreras}}</h2>
 
-        <h2>{{TituloCarreras}}</h2>
-        <table>
-            <thead>
-                <th>{{TablaCarreras[0]}}</th>
-                <th>{{TablaCarreras[1]}}</th>
-            </thead>
-            <tbody>
-                <tr *ngFor="let carrera of Carreras">
-                    <th>{{ carrera.id_carrera}}</th>
-                    <th>{{ carrera.nombre_carrera}}</th>
-                </tr>
-            </tbody>
-        </table>
-    </form>
+            <table class="table table-dark table-sm">
+                <thead>
+                    <th>{{TablaCarreras[0]}}</th>
+                    <th>{{TablaCarreras[1]}}</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let carrera of Carreras">
+                        <td>{{ carrera.id_carrera}}</td>
+                        <td>{{ carrera.nombre_carrera}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
 </div>
+<br><br>
 
-<!-- para mostrar el un solo Tipo de Documento -->
+<!--Mostrar carrera -->
 
 <div class="container">
-    <h2>Mostramos la carrera seleccionada: </h2>
+    <div class="mostrarCarrera">
+        <h2>Mostrar Carrera</h2>
+        <form (ngSubmit)="buscarCarrera()" [formGroup]="filtrarCarrera">
+            Id de la carrera a mostrar
+            <select class="dropdown" formControlName="combofiltro" (click)="consultarCarrera(2)">
+                <option value="value1">Carrera a buscar</option>
+                <option *ngFor="let Carrera of comboListaCarrera" [value]="Carrera.id_carrera">
+                    {{Carrera.id_carrera}} -
+                    {{Carrera.nombre_carrera}}
+                </option>
+            </select>
 
-    <form (ngSubmit)="buscarCarrera()" [formGroup]="filtrarCarrera">
-        Id de la carrera a mostrar
-        <select class="dropdown" formControlName="combofiltro" (click)="consultarCarrera(2)">
-            <option value="value1">Carrera a buscar</option>
-            <option *ngFor="let Carrera of comboListaCarrera" [value]="Carrera.id_carrera">
-                {{Carrera.id_carrera}} -
-                {{Carrera.nombre_carrera}}
-            </option>
-        </select>
+            <br><br>
 
-        <br><br>
-
-        <button type="submit"  style="margin-right: 30px;">Buscar Carrera</button>
-        <button (click)="limpiarLista()">Limpiar</button>
-    </form>
-
-    <ul>
+            <button type="submit" style="margin-right: 30px;">Buscar Carrera</button>
+            <button (click)="limpiarLista()">Limpiar</button>
+        </form><br>
         <h2>{{TituloCarrera}}</h2>
 
-        <table class="tabBuscar">
+        <table class="table table-dark table-sm">
             <thead class="Colb">
                 <th class="b">{{TabBusCarrera[0]}}</th>
                 <th class="b">{{TabBusCarrera[1]}}</th>
@@ -58,46 +59,48 @@
 
             <tbody class="Filb">
                 <tr class="b" *ngFor="let carrera of MiCarrera">
-                    <th class="b">{{ carrera.id_carrera}} </th>
-                    <th class="b">{{ carrera.nombre_carrera}} </th>
+                    <td class="b">{{ carrera.id_carrera}} </td>
+                    <td class="b">{{ carrera.nombre_carrera}} </td>
                 </tr>
             </tbody>
         </table>
-    </ul>
-    <br>
+        <br>
+    </div>
 </div>
 
-<button (click)="mostrarHtml(1)" class="btn btn-dark">Ingresar Carrera</button>
-<div class="container-fluid">
-    <br>
-    <form *ngIf="mostrarCrear" [formGroup]="formularioCarrera">
-        <label for="">Ingrese nombre carrera</label>
-        <input type="text" formControlName="nombre_carrera">
+<div class="igresarCarrera">
+    <button (click)="mostrarHtml(1)" class="btn btn-dark">Ingresar Carrera </button>
+    <div class="container-fluid">
         <br>
-        <button [disabled]="formularioCarrera.invalid" (click)="insertarCarrera()" class="btn btn-danger">Subir</button>
-        <br><br>
-        <button (click)="mostrarHtml(1)" class="btn btn-dark">Ocultar</button>
-    </form>
-    
+        <form *ngIf="mostrarCrear" [formGroup]="formularioCarrera">
+            <label for="">Ingrese nombre carrera </label>
+            <input type="text" formControlName="nombre_carrera">
+            <br>
+            <button [disabled]="formularioCarrera.invalid" (click)="insertarCarrera()" class="btn btn-danger">Subir</button>
+            <br><br>
+            <button (click)="mostrarHtml(1)" class="btn btn-dark">Ocultar</button> <br><br>
+        </form>
+    </div> 
 </div>
-<button (click)="mostrarHtml(2)" class="btn btn-dark">Actualizar carrera</button>
-<div class="container-fluid">
+<div class="actualizarCarrera">
+    <button (click)="mostrarHtml(2)" class="btn btn-dark">Actualizar carrera</button><br>
     <br>
     <form *ngIf="mostrarActualizar" [formGroup]="formularioActualizar">
-        Id de la carrera a actualizar
-        <select class="dropdown" formControlName="id_carrera" (click)="consultarCarrera(2)">
-            <option value="value1">Carrera a buscar</option>
-            <option *ngFor="let Carrera of comboListaCarrera" [value]="Carrera.id_carrera">
+        Id de la carrera a actualizar 
+        <select class="dropdown" formControlName="id_carrera" (click)="consultarCarrera(2)"><br>
+            <option value="value1">Carrera a buscar</option><br>
+            <option *ngFor="let Carrera of comboListaCarrera" [value]="Carrera.id_carrera"><br>
                 {{Carrera.id_carrera}} -
                 {{Carrera.nombre_carrera}}
             </option>
-        </select>
-        <label for="">Ingrese nombre carrera</label>
+        </select><br>
+        <label type="text">Ingrese nuevo nombre de la carrera: </label>
         <input type="text" formControlName="nombre_carrera">
-        <br>
-        <button [disabled]="formularioActualizar.invalid" (click)="actualizarCarrera()" class="btn btn-danger">Subir</button>
+        <br><br>
+
+        <button [disabled]="formularioActualizar.invalid" (click)="actualizarCarrera()"
+            class="btn btn-danger">Subir</button>
         <br><br>
         <button (click)="mostrarHtml(2)" class="btn btn-dark">Ocultar</button>
     </form>
-    
 </div>
