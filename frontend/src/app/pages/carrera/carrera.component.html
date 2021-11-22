@@ -35,11 +35,10 @@
     <div class="mostrarCarrera">
         <h2>Mostrar Carrera</h2>
         <form (ngSubmit)="buscarCarrera()" [formGroup]="filtrarCarrera">
-            Id de la carrera a mostrar
+            Seleccione Carrera a mostrar
             <select class="dropdown" formControlName="combofiltro" (click)="consultarCarrera(2)">
                 <option value="value1">Carrera a buscar</option>
                 <option *ngFor="let Carrera of comboListaCarrera" [value]="Carrera.id_carrera">
-                    {{Carrera.id_carrera}} -
                     {{Carrera.nombre_carrera}}
                 </option>
             </select>
@@ -82,18 +81,18 @@
         </form>
     </div> 
 </div>
+
 <div class="actualizarCarrera">
     <button (click)="mostrarHtml(2)" class="btn btn-dark">Actualizar carrera</button><br>
     <br>
     <form *ngIf="mostrarActualizar" [formGroup]="formularioActualizar">
-        Id de la carrera a actualizar 
+        Carrera a actualizar 
         <select class="dropdown" formControlName="id_carrera" (click)="consultarCarrera(2)"><br>
             <option value="value1">Carrera a buscar</option><br>
             <option *ngFor="let Carrera of comboListaCarrera" [value]="Carrera.id_carrera"><br>
-                {{Carrera.id_carrera}} -
                 {{Carrera.nombre_carrera}}
             </option>
-        </select><br>
+        </select><br><br>
         <label type="text">Ingrese nuevo nombre de la carrera: </label>
         <input type="text" formControlName="nombre_carrera">
         <br><br>
