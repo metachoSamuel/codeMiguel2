@@ -4,7 +4,7 @@ var InformeModel = {}
 
 InformeModel.postInformeAsistencia = function (parametros, callback) {
     if (connection) {
-        var sql = "SELECT id_asistencia, fecha, observaciones, P.nombre_1, P.nombre_2, M.nombre_materia, C.nombre_carrera"
+        var sql = "SELECT id_asistencia, DATE_FORMAT(fecha, '%y-%m-%d') as fecha, observaciones, P.nombre_1, P.nombre_2, M.nombre_materia, C.nombre_carrera"
         +" FROM tb_asistencias AS A"
         +"      INNER JOIN tb_personas AS P ON(P.id_persona=A.id_persona)"
         +"      INNER JOIN tb_materias AS M ON(A.id_materia=M.id_materia)"

@@ -1,0 +1,59 @@
+<h1>
+    Informe asistencia
+</h1>
+
+<div class="actualizarMateria">
+    <button (click)="mostrarHtml(1)" class="btn btn-dark">informe Asistencia</button>
+    <div class="container-fluid">
+        <br>
+        <form *ngIf="mostrarCrear" [formGroup]="formularioInforme">
+            Seleccione una Persona
+            <select class="dropdown" formControlName="id" (click)="obtenerPersona()">
+                <option value="value1">Seleccione una Persona</option>
+                <option *ngFor="let persona of listaPersonas" [value]="persona.id_persona">
+                    {{persona.id_persona}}- 
+                    {{ persona.apellido_1 }}{{ persona.nombre_1 }}
+                </option>
+            </select>
+            <br><br>
+            <label for="">Fecha Inicio</label>
+            <input type="date" formControlName="fechaInicio">
+            <br><br>
+            <label for="">Fecha Final</label>
+            <input type="date" formControlName="fechaFin">
+            <br><br>
+            <button [disabled]="formularioInforme.invalid" (click)="verInforme()" (click)="mostrarHtml(2)" class="btn btn-danger">Subir</button>
+            <br><br>
+            <button (click)="mostrarHtml(1)" class="btn btn-dark">Ocultar</button>
+        </form>    
+    </div>
+</div>
+
+<div class="listarInforme">
+    <form *ngIf="mostrarListar" [formGroup]="formularioListar">
+        <button (click)="limpiarLista()" (click)="mostrarHtml(2)" style="margin-right: 30px;">Limpiar lista</button>
+        <br><br>
+        <table>
+            <thead>
+
+                <th>{{TablaAsistencia[0]}}</th>
+                <th>{{TablaAsistencia[1]}}</th>
+                <th>{{TablaAsistencia[2]}}</th>
+                <th>{{TablaAsistencia[3]}}</th>
+                <th>{{TablaAsistencia[4]}}</th>
+                <th>{{TablaAsistencia[5]}}</th>
+
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of dataInforme">
+                    <th> {{ data.id_asistencia}} </th>
+                    <th> {{ data.fecha}} </th>
+                    <th> {{ data.observaciones}} </th>
+                    <th> {{ data.nombre_2}} {{ data.nombre_1}} </th>
+                    <th> {{ data.nombre_materia}} </th>
+                    <th> {{ data.nombre_carrera}} </th>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>

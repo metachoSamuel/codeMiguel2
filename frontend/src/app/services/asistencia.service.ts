@@ -56,4 +56,10 @@ export class AsistenciaService {
   {
     return this.http.put(this.Url + "/asistencia", data, httpOptions).toPromise()
   }
+
+  //Informe
+  postInformeAsistencia(data: any): Observable<any>
+  {
+    return this.http.post(this.Url+"/informe/asistencia", data, httpOptions);
+  }
 }

@@ -129,6 +129,7 @@ export class PersonaComponent implements OnInit {
       this.servi.getPersonas().subscribe((data: any) => {
         if (op == 1) {
           this.Personas = data;
+          console.log(data)
           this.TituloPersonas = "Listar Personas";
           this.TablaPersona[0] = "Indicador";
           this.TablaPersona[1] = "Apellidos";

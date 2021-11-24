@@ -133,6 +133,7 @@ export class AsistenciaComponent implements OnInit {
       this.servi.getAsistencias().subscribe((data: any) => {
         if (op == 1) {
           this.Asistencias = data;
+          console.log(typeof this.Asistencias)
           this.TituloAsistencia = "Listar Asistencias"
           this.TablaAsistencia[0] = "indicador";
           this.TablaAsistencia[1] = "fecha";
