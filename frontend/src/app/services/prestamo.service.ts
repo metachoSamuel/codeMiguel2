@@ -39,4 +39,9 @@ export class PrestamoService {
     return this.http.get(this.Url+"/prestamo", httOptions)
   }
 
+  postInformePrestamo(data:{}): Observable<any>
+  {
+    return this.http.post(this.Url + "/informe/prestamo", data, httOptions)
+  }
+
 }

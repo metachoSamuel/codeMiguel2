@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AsistenciaComponent } from './pages/asistencia/asistencia.component';
 import { AudioVisualComponent } from './pages/audio-visual/audio-visual.component'
 import { CarreraComponent } from './pages/carrera/carrera.component';
+import { InformePrestamoComponent } from './pages/informe-prestamo/informe-prestamo.component';
 import { InformeComponent } from './pages/informe/informe.component';
 import { InicioComponent } from './pages/inicio/inicio.component';
 import { MateriaComponent } from './pages/materia/materia.component';
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: 'materia', component: MateriaComponent, },
   {path: 'audiovisual', component: AudioVisualComponent,},
   {path: 'informe', component: InformeComponent},
+  {path: 'informePrestamo', component: InformePrestamoComponent},
   {path: '**', pathMatch: 'full', redirectTo: 'inicio' }
 ];
 

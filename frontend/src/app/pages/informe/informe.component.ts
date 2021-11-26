@@ -20,7 +20,6 @@ export class InformeComponent implements OnInit {
   TablaAsistencia: any = [];
 
   controlLista = 1;
-  BuscarEvalor = 1;
 
   //Control formularios
   mostrarCrear: boolean = false;
@@ -65,9 +64,8 @@ export class InformeComponent implements OnInit {
 
       this.servi.postInformeAsistencia(this.formularioInforme.value).subscribe(
         (data: any) => {
-          this.dataInforme = data
-          console.log(this.dataInforme)
-          this.TituloAsistencias = "Informe chingon"
+          this.dataInforme = data;
+          this.TituloAsistencias = "Informe chingon";
           this.TablaAsistencia[0] = "indicador";
           this.TablaAsistencia[1] = "fecha";
           this.TablaAsistencia[2] = "observaciones";
@@ -93,7 +91,6 @@ export class InformeComponent implements OnInit {
   public obtenerPersona() {
     this.serviPersona.getPersonas().subscribe((data: any) => {
       this.listaPersonas = data;
-      //console.log(this.listaPersonas)
     }, error => { console.error(error + "") })
   }
 

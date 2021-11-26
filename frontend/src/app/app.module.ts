@@ -23,6 +23,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { MateriaComponent } from './pages/materia/materia.component';
 import { AudioVisualComponent } from './pages/audio-visual/audio-visual.component';
 import { InformeComponent } from './pages/informe/informe.component';
+import { InformePrestamoComponent } from './pages/informe-prestamo/informe-prestamo.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { InformeComponent } from './pages/informe/informe.component';
     FooterComponent,
     MateriaComponent,
     AudioVisualComponent,
-    InformeComponent
+    InformeComponent,
+    InformePrestamoComponent
   ],
   imports: [
     BrowserModule,
