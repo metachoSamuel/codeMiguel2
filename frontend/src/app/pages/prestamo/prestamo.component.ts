@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { ServicioService } from '../../services/servicio.service';
+import { PrestamoService } from 'src/app/services/prestamo.service';
 
 @Component({
   selector: 'app-prestamo',
@@ -26,32 +26,47 @@ export class PrestamoComponent implements OnInit {
   controlLista = 1;
   BuscarEvalor = 1;
 
+  //Cotrol Formularios
+  mostrarCrear: boolean = false;
+  mostrarActualizar: boolean = false;
+
+  //FormGroup
   ListaPrestamos = new FormGroup({});
 
   filtrarPrestamo = new FormGroup({
     combofiltro: new FormControl()
   })
 
+  formularioCrear = new FormGroup({
+
+  })
+
   constructor(
     private formBuilder: FormBuilder,
-    private servi: ServicioService,
+    private servi: PrestamoService,
     Router: Router
   ) { }
 
-  //Culsultar prestamo
   public consultarPrestamo(op: any) {
     if (this.controlLista == 1) {
-      this.servi.getPrestamo().subscribe((data: any) => {
+      this.servi.getPrestamos().subscribe((data: any) => {
         if (op == 1) {
           this.Prestamos = data;
-          this.TituloPrestamo = "LISTAR PRESTAMOS";
-          this.TablaPrestamos[0] = "indicador";
-          this.TablaPrestamos[1] = "fecha de prestamo";
-          this.TablaPrestamos[2] = "fecha de entrega";
+          this.TituloPrestamos = "Listar Carreras";
+          this.TablaPrestamos[0] = "Indicador";
+          this.TablaPrestamos[1] = "fecha prestamo";
+          this.TablaPrestamos[2] = "fecha entrega";
           this.TablaPrestamos[3] = "Persona";
-          this.TablaPrestamos[4] = "Elemento prestado";
+          this.TablaPrestamos[4] = "Elemento";
         } else if (op == 2) {
-          this.TablaPrestamos[0] = "su puta madre";
+          this.comboListaPrestamo = data;
+          this.MiPrestamo = null;
+          this.TituloPrestamo = "";
+          this.TablaPrestamos[0] = "";
+          this.TablaPrestamos[1] = "";
+          this.TablaPrestamos[2] = "";
+          this.TablaPrestamos[3] = "";
+          this.TablaPrestamos[4] = "";
         }
       }, error => { console.error(error + " ") })
     } else {
@@ -62,39 +77,8 @@ export class PrestamoComponent implements OnInit {
       this.TablaPrestamos[2] = "";
       this.TablaPrestamos[3] = "";
       this.TablaPrestamos[4] = "";
+      this.controlLista = 1;
     }
-
-
-    /*if(this.controlLista==1){
-      this.servi.getPrestamo().subscribe((data: any) => {
-        if(op==1){
-          let dat = data;
-          this.Prestamos = data;
-          this.TituloPrestamo = 'LISTA PRESTAMOS';
-          this.TablaPrestamos[0]='nombre'
-        }else if (op==2){
-          this.comboListaPrestamo = data;
-          this.MiPrestamo = null;
-          this.TabBusPrestamo[0]="xd";
-        }else if(op==3){
-
-        }
-      }, error => {console.error(error + " ")});
-    }else{
-      this.Prestamos = null;
-      this.TituloPrestamos = "";
-      this.TablaPrestamos[0]="";
-      this.controlLista=1;
-    }
-    this.servi.getPrestamo().subscribe((data: any)=>{
-      this.Prestamos=data;
-      this.TituloPrestamo = "LISTAR PRESTAMOS";
-      this.TablaPrestamos[0]="indicador";
-      this.TablaPrestamos[1]="fecha de prestamo";
-      this.TablaPrestamos[2]="fecha de entrega";
-      this.TablaPrestamos[3]="Persona";
-      this.TablaPrestamos[4]="Elemento prestado";
-    }, error => {console.error(error+" ")});*/
   }
 
   public LimpiarLista() {

@@ -22,6 +22,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { MateriaComponent } from './pages/materia/materia.component';
 import { AudioVisualComponent } from './pages/audio-visual/audio-visual.component';
+import { InformeComponent } from './pages/informe/informe.component';
+import { InformePrestamoComponent } from './pages/informe-prestamo/informe-prestamo.component';
 
 
 @NgModule({
@@ -35,7 +37,9 @@ import { AudioVisualComponent } from './pages/audio-visual/audio-visual.componen
     NavbarComponent,
     FooterComponent,
     MateriaComponent,
-    AudioVisualComponent
+    AudioVisualComponent,
+    InformeComponent,
+    InformePrestamoComponent
   ],
   imports: [
     BrowserModule,

@@ -16,7 +16,7 @@ PrestamoModel.insertPrestamo = function(PrestamoData, callback){
 
 PrestamoModel.getPrestamo = function(id, callback){
     if(connection){
-        var sql = "SELECT id_prestamo, fecha_prestamo, fecha_entrega, P.apellido_1, P.nombre_1, A.elemento"
+        var sql = "SELECT id_prestamo, DATE_FORMAT(fecha_prestamo,'%y-%m-%d')as fecha_prestamo, DATE_FORMAT(fecha_entrega,'%y-%m-%d')as fecha_entrega, P.apellido_1, P.nombre_1, A.elemento"
 		+" FROM tb_prestamos AS PR"
 		+" INNER JOIN tb_personas AS P ON(P.id_persona = PR.id_persona)"
 		+" INNER JOIN ct_audio_visuales AS A ON(A.id_elemento=PR.id_elemento)"
@@ -52,7 +52,7 @@ PrestamoModel.updatePrestamo= function(PrestamoData, callback){
 
 PrestamoModel.getPrestamos=function(callback){
     if(connection){
-        var sql="SELECT id_prestamo, fecha_prestamo, fecha_entrega, P.apellido_1, P.nombre_1, A.elemento"
+        var sql="SELECT id_prestamo, DATE_FORMAT(fecha_prestamo,'%Y-%m-%d')as fecha_prestamo, DATE_FORMAT(fecha_entrega,'%y-%m-%d')as fecha_entrega, P.apellido_1, P.nombre_1, A.elemento"
 		+" FROM tb_prestamos AS PR"
 		+" INNER JOIN tb_personas AS P ON(P.id_persona = PR.id_persona)"
 		+" INNER JOIN ct_audio_visuales AS A ON(A.id_elemento = PR.id_elemento)"

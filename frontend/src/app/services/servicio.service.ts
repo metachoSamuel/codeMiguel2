@@ -17,21 +17,6 @@ export class ServicioService {
   private Url: string = 'http://localhost:3000';
   constructor(private http: HttpClient) { }
 
-  private extractData(res: Response) {
-   // console.log("22");
-
-    let body = JSON.parse('' + res);
-    //console.log("23 A " + body);
-    return body || {};
-  }
-
-  private handleError<T>(operation = 'operation', result?: T) {
-    //console.log(" ggggg ");
-    return (error: any): Observable<T> => {
-      console.log(`${operation} failed: ${error.message}`);
-      return of(result as T)
-    };
-  }
 
   //---------------------------Carreras---------------------------//
   // Método Listar carreras
@@ -59,45 +44,5 @@ export class ServicioService {
       this.http.put(this.Url + "/carrera", data, httpOptions).toPromise()
     });
   }
-
-
-  //Prestamos
-  getPrestamo(): Observable<any>
-  {
-    return this.http.get(this.Url + "/prestamo", httpOptions)
-  }
-
-
-  
-
-
-  /*
- // Método para insertar un nuevo Tipo de documento 
-
-  async insertTipDoc(TipDocD): Promise<any> {
-
-    //console.log(TipDocD, this.Url+"/tipdoc")
-
-    return new Promise((resolve, reject) => {
-      this.http.post(this.Url + "/tipdoc", TipDocD, httpOptions).toPromise()
-    });
-  }
-
-  //-------------------------------------------------------------
- // Método para modificar un  Tipo de documento
-
-  async updateTipDoc(cadena): Promise<any> {
-
-    //console.log("33 " + cadena)
-    //console.log("tales 60  " + cadena.id_tip_doc + " - " + cadena.tipo_documento+ " - " +  cadena.iniciales_tip_doc, this.Url + "/tipdoc")
-
- 
-    return new Promise((resolve, reject) => {
-      this.http.put(this.Url + "/tipdoc", cadena, httpOptions).toPromise()
-    });
-  }
-  
-//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-*/
 
 }

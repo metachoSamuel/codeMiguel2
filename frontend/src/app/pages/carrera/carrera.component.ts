@@ -83,6 +83,8 @@ export class CarreraComponent implements OnInit {
   public insertarCarrera() {
     var dataCarrera = this.formularioCarrera.value
     this.servi.insertCarrera(dataCarrera)
+    alert('Se ha agregado esta perra carrera: '+dataCarrera.nombre_carrera)
+    
   }
 
   //Leer Carrera
