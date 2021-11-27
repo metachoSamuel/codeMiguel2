@@ -3,9 +3,10 @@
 </h1>
 <br>
 <div class="listaMaterias">
+    <br>
     <form (ngSubmit)="consultarMateria(1)" [formGroup]="listaMaterias">
-        <button type="submit" style="margin-right: 30px">Mostrar Materias</button>
-        <button (click)="limpiarLista()" style="margin-right: 30px;">Limpiar lista</button>
+        <button type="submit" style="margin-left: 30%;">Mostrar Materias</button>
+        <button (click)="limpiarLista()" style="margin-left: 30px;">Limpiar lista</button>
         <br><br>
 
         <h2>{{TituloMaterias}}</h2>
@@ -31,9 +32,10 @@
 
 <!-- Mostrar materia -->
 <div class="buscarMateria">
+    <br>
     <h2>Mostrar Materia: </h2>
 
-    <form (ngSubmit)="buscarMateria()" [formGroup]="filtrarMateria">
+    <form (ngSubmit)="buscarMateria()" [formGroup]="filtrarMateria" style="margin-left: 30% ;">
         Seleccione Materia a mostrar
         <select class="dropdown" formControlName="combofiltro" (click)="consultarMateria(2)">
             <option value="value1">Materia a buscar</option>
@@ -64,32 +66,40 @@
             </tr>
         </tbody>
     </table>
-    <br>
 </div>
 
-<button (click)="mostrarHtml(1)" class="btn btn-dark">Ingresar Materia</button>
-<div class="container-fluid">
+<br><br>
+
+<div class="ingresarMateria">
     <br>
-    <form *ngIf="mostrarCrear" [formGroup]="formularioCrear">
-        <label for="">Ingrese nombre de la materia</label>
-        <input type="text" formControlName="nombre_materia">
-        <br><br>
-        <label for="">Carrera</label>
-        <select class="dropdown" formControlName="id_carrera" (click)="obtenerCarrera()">
-            <option value="value1">Carrera</option>
-            <option *ngFor="let carrera of listaCarreras" [value]="carrera.id_carrera"> 
-                {{carrera.nombre_carrera}}
-            </option>
-        </select>
+    <button (click)="mostrarHtml(1)" class="btn btn-dark" style="margin-left: 40%;">Ingresar Materia</button>
+    <div class="container-fluid" style="margin-left: 30%">
         <br>
-        <button [disabled]="formularioCrear.invalid" (click)="crearMateria()" class="btn btn-danger">Subir</button>
-        <br><br>
-        <button (click)="mostrarHtml(1)" class="btn btn-dark">Ocultar</button><br><br>
-    </form>
+        <form *ngIf="mostrarCrear" [formGroup]="formularioCrear">
+            <label for="">Ingrese nombre de la materia</label>
+            <input type="text" formControlName="nombre_materia">
+            <br><br>
+            <label for="">Carrera</label>
+            <select class="dropdown" formControlName="id_carrera" (click)="obtenerCarrera()">
+                <option value="value1">Carrera</option>
+                <option *ngFor="let carrera of listaCarreras" [value]="carrera.id_carrera"> 
+                    {{carrera.nombre_carrera}}
+                </option>
+            </select>
+            <br><br>
+            <button [disabled]="formularioCrear.invalid" (click)="crearMateria()" class="btn btn-danger">Subir</button>
+            <br><br>
+            <button (click)="mostrarHtml(1)" class="btn btn-dark">Ocultar</button><br><br>
+        </form>
+    </div>
 </div>
+
+<br><br>
+
 <div class="actualizarMateria">
-    <button (click)="mostrarHtml(2)" class="btn btn-dark">Actualizar materia</button>
-    <div class="container-fluid">
+    <br>
+    <button (click)="mostrarHtml(2)" class="btn btn-dark" style="margin-left: 40%;">Actualizar materia</button>
+    <div class="container-fluid" style="margin-left: 30%;">
         <br>
         <form *ngIf="mostrarActualizar" [formGroup]="formularioActualizar">
             Nombre de la materia a actualizar
@@ -114,6 +124,7 @@
             <button [disabled]="formularioActualizar.invalid" (click)="actualizarMateria()" class="btn btn-danger">Subir</button>
             <br><br>
             <button (click)="mostrarHtml(2)" class="btn btn-dark">Ocultar</button>
+            <br><br>
         </form>    
     </div>
 </div>

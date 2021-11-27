@@ -1,114 +1,163 @@
 <div class="lista">
-    <h2>Lista Elemento</h2>
+  <br />
+  <h1>Lista Elemento</h1>
 
-    <form (ngSubmit)="consultarAudioVisual(1)" [formGroup]="ListaAudioVisual">
-        <button type="submit" style="margin-right: 30px">Mostrar Elementos</button>
-        <button (click)="limpiarLista()" style="margin-right: 30px;">Limpiar</button>
+  <form (ngSubmit)="consultarAudioVisual(1)" [formGroup]="ListaAudioVisual">
+    <button type="submit" style="margin-left: 30%">Mostrar Elementos</button>
+    <button (click)="limpiarLista()" style="margin-left: 30px">Limpiar</button>
 
-        <br><br><br><br>
+    <br /><br />
 
-        <h2>{{TituloAudioVisuales}}</h2>
-        <table>
-            <thead>
-
-                <th>{{TablaAudioVisual[0]}}</th>
-                <th>{{TablaAudioVisual[1]}}</th>
-                <th>{{TablaAudioVisual[2]}}</th>
-
-            </thead>
-            <tbody>
-                <tr *ngFor="let elemento of AudioVisual">
-                    <th> {{ elemento.id_elemento}} </th>
-                    <th> {{ elemento.elemento}} </th>
-                    <th> {{ elemento.estado}} </th>
-
-                </tr>
-            </tbody>
-        </table>
-    </form>
-
+    <h2 style="margin-left: 10%">{{ TituloAudioVisuales }}</h2>
+    <table>
+      <thead>
+        <th>{{ TablaAudioVisual[0] }}</th>
+        <th>{{ TablaAudioVisual[1] }}</th>
+        <th>{{ TablaAudioVisual[2] }}</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let elemento of AudioVisual">
+          <th>{{ elemento.id_elemento }}</th>
+          <th>{{ elemento.elemento }}</th>
+          <th>{{ elemento.estado }}</th>
+        </tr>
+      </tbody>
+    </table>
+  </form>
 </div>
-
+<br /><br />
 <!-- para mostrar el un solo Tipo de Documento -->
 <div class="buscar">
-    <h2>Mostramos el elemento seleccionado: </h2>
+  <br />
+  <h2 style="margin-left: 30%">Mostramos el elemento seleccionado:</h2>
 
-    <form (ngSubmit)="buscarAudioVisual()" [formGroup]="filtrarAudioVisual">
-        Seleccione Elemento
-        <select class="dropdown" formControlName="combofiltro" (click)="consultarAudioVisual(2)">
-            <option value="value1">Elemento a buscar</option>
-            <option *ngFor="let elemento of comboListaAudioVisual" [value]="elemento.id_elemento">
-                {{elemento.id_elemento}} -
-                {{elemento.elemento}}
-            </option>
-        </select>
+  <form
+    (ngSubmit)="buscarAudioVisual()"
+    [formGroup]="filtrarAudioVisual"
+    style="margin-left: 30%"
+  >
+    Seleccione Elemento
+    <select
+      class="dropdown"
+      formControlName="combofiltro"
+      (click)="consultarAudioVisual(2)"
+    >
+      <option value="value1">Elemento a buscar</option>
+      <option
+        *ngFor="let elemento of comboListaAudioVisual"
+        [value]="elemento.id_elemento"
+      >
+        {{ elemento.id_elemento }} -
+        {{ elemento.elemento }}
+      </option>
+    </select>
 
-        <br><br>
+    <br /><br />
 
-        <button type="submit" style="margin-right: 30px">Buscar Elemento</button>
-        <button (click)="limpiarLista()" style="margin-right: 30px;">Limpiar</button>
-    </form>
+    <button type="submit" style="margin-right: 30px">Buscar Elemento</button>
+    <button (click)="limpiarLista()" style="margin-right: 30px">Limpiar</button>
+  </form>
 
-    <ul>
-        <h2>{{TituloAudioVisual}}</h2>
+  <ul>
+    <h2>{{ TituloAudioVisual }}</h2>
 
-        <table class="tabBuscar">
-            <thead class="Colb">
-                <th class="b">{{TabBusAudioVisual[0]}}</th>
-                <th class="b">{{TabBusAudioVisual[1]}}</th>
-                <th class="b">{{TabBusAudioVisual[2]}}</th>
-            </thead>
+    <table class="tabBuscar">
+      <thead class="Colb">
+        <th class="b">{{ TabBusAudioVisual[0] }}</th>
+        <th class="b">{{ TabBusAudioVisual[1] }}</th>
+        <th class="b">{{ TabBusAudioVisual[2] }}</th>
+      </thead>
 
-            <tbody class="Filb">
-                <tr class="b" *ngFor="let elemento of MiAudioVisual">
-                    <th> {{ elemento.id_elemento}} </th>
-                    <th> {{ elemento.elemento}} </th>
-                    <th> {{ elemento.estado}} </th>
-                </tr>
-            </tbody>
-        </table>
-    </ul>
-    <br>
+      <tbody class="Filb">
+        <tr class="b" *ngFor="let elemento of MiAudioVisual">
+          <th>{{ elemento.id_elemento }}</th>
+          <th>{{ elemento.elemento }}</th>
+          <th>{{ elemento.estado }}</th>
+        </tr>
+      </tbody>
+    </table>
+  </ul>
 </div>
 
-<button (click)="mostrarHtml(1)" class="btn btn-dark">Ingresar Elemento</button>
-<div class="container-fluid">
-    <br>
+<br /><br />
+<div class="ingresar">
+  <br />
+  <button
+    (click)="mostrarHtml(1)"
+    class="btn btn-dark"
+    style="margin-left: 40%"
+  >
+    Ingresar Elemento
+  </button>
+  <div class="container-fluid" style="margin-left: 30%">
+    <br />
     <form *ngIf="mostrarCrear" [formGroup]="formularioCrear">
-        <label for="">Ingrese nombre del elemento</label>
-        <input type="text" formControlName="elemento">
-        <br>
-        <label for="">estado</label>
-        <input type="text" formControlName="estado">
-        <br>
-        <button [disabled]="formularioCrear.invalid" (click)="crearAudioVisual()" class="btn btn-danger">Subir</button>
-        <br><br>
-        <button (click)="mostrarHtml(1)" class="btn btn-dark">Ocultar</button>
+      <label for="">Ingrese nombre del elemento</label>
+      <input type="text" formControlName="elemento" />
+      <br />
+      <br />
+      <label for="">estado</label>
+      <input type="text" formControlName="estado" />
+      <br /><br />
+      <button
+        [disabled]="formularioCrear.invalid"
+        (click)="crearAudioVisual()"
+        class="btn btn-danger"
+      >
+        Subir
+      </button>
+      <br /><br />
+      <button (click)="mostrarHtml(1)" class="btn btn-dark">Ocultar</button>
+      <br /><br />
     </form>
-    
+  </div>
 </div>
-<button (click)="mostrarHtml(2)" class="btn btn-dark">Actualizar Elemento</button>
-<div class="container-fluid">
+
+<br /><br />
+<div class="actualizar">
     <br>
+  <button
+    (click)="mostrarHtml(2)"
+    class="btn btn-dark"
+    style="margin-left: 40%"
+  >
+    Actualizar Elemento
+  </button>
+  <div class="container-fluid"style="margin-left: 30%">
+    <br />
     <form *ngIf="mostrarActualizar" [formGroup]="formularioActualizar">
-        Id del Elemento a actualizar
-        <select class="dropdown" formControlName="id_elemento" (click)="consultarAudioVisual(2)">
-            <option value="value1">Elemento a buscar</option>
-            <option *ngFor="let elemento of comboListaAudioVisual" [value]="elemento.id_elemento">
-                {{elemento.id_elemento}} -
-                {{elemento.elemento}}
-            </option>
-        </select>
-        <br>
-        <label for="">Ingrese nombre del elemento</label>
-        <input type="text" formControlName="elemento">
-        <br>
-        <label for="">estado</label>
-        <input type="text" formControlName="estado">
-        <br>
-        <button [disabled]="formularioActualizar.invalid" (click)="actualizarAudioVisual()" class="btn btn-danger">Subir</button>
-        <br><br>
-        <button (click)="mostrarHtml(2)" class="btn btn-dark">Ocultar</button>
+      Id del Elemento a actualizar
+      <select
+        class="dropdown"
+        formControlName="id_elemento"
+        (click)="consultarAudioVisual(2)"
+      >
+        <option value="value1">Elemento a buscar</option>
+        <option
+          *ngFor="let elemento of comboListaAudioVisual"
+          [value]="elemento.id_elemento"
+        >
+          {{ elemento.id_elemento }} -
+          {{ elemento.elemento }}
+        </option>
+      </select>
+      <br /><br />
+      <label for="">Ingrese nombre del elemento</label>
+      <input type="text" formControlName="elemento" />
+      <br /><br />
+      <label for="">estado</label>
+      <input type="text" formControlName="estado" />
+      <br /><br />
+      <button
+        [disabled]="formularioActualizar.invalid"
+        (click)="actualizarAudioVisual()"
+        class="btn btn-danger"
+      >
+        Subir
+      </button>
+      <br /><br />
+      <button (click)="mostrarHtml(2)" class="btn btn-dark">Ocultar</button>
+      <br /><br />
     </form>
-    
+  </div>
 </div>

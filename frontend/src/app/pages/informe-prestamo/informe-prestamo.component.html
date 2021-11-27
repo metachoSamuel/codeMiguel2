@@ -1,59 +1,75 @@
-<h1>
-    Informe Prestamo
-</h1>
+<h1>Informe Prestamo</h1>
 
 <div class="informePrestamo">
-    <button (click)="mostrarHtml(1)" class="btn btn-dark">informe Prestamo</button>
-    <div class="container-fluid">
-        <br>
-        <form *ngIf="mostrarCrear" [formGroup]="formularioInforme">
-            Seleccione un Elemento
-            <select class="dropdown" formControlName="id" (click)="obtenerElemento()">
-                <option value="value1">Seleccione un Elemento</option>
-                <option *ngFor="let elemento of listaElementos" [value]="elemento.id_elemento">
-                    {{elemento.id_elemento}}- 
-                    {{ elemento.elemento }}
-                </option>
-            </select>
-            <br><br>
-            <label for="">Fecha Inicio</label>
-            <input type="date" formControlName="fechaInicio">
-            <br><br>
-            <label for="">Fecha Final</label>
-            <input type="date" formControlName="fechaFin">
-            <br><br>
-            <button [disabled]="formularioInforme.invalid" (click)="verInforme()" (click)="mostrarHtml(2)" class="btn btn-danger">Subir</button>
-            <br><br>
-            <button (click)="mostrarHtml(1)" class="btn btn-dark">Ocultar</button>
-        </form>    
-    </div>
+    <br>
+  <button (click)="mostrarHtml(1)" class="btn btn-dark"style="margin-left: 40%;">
+    informe Prestamo
+  </button>
+  <div class="container-fluid">
+    <br />
+    <form *ngIf="mostrarCrear" [formGroup]="formularioInforme">
+      Seleccione un Elemento
+      <select class="dropdown" formControlName="id" (click)="obtenerElemento()">
+        <option value="value1">Seleccione un Elemento</option>
+        <option
+          *ngFor="let elemento of listaElementos"
+          [value]="elemento.id_elemento"
+        >
+          {{ elemento.id_elemento }}-
+          {{ elemento.elemento }}
+        </option>
+      </select>
+      <br /><br />
+      <label for="">Fecha Inicio</label>
+      <input type="date" formControlName="fechaInicio" />
+      <br /><br />
+      <label for="">Fecha Final</label>
+      <input type="date" formControlName="fechaFin" />
+      <br /><br />
+      <button
+        [disabled]="formularioInforme.invalid"
+        (click)="verInforme()"
+        (click)="mostrarHtml(2)"
+        class="btn btn-danger"
+      >
+        Subir
+      </button>
+      <br /><br />
+      <button (click)="mostrarHtml(1)" class="btn btn-dark">Ocultar</button>
+      <br /><br />
+    </form>
+  </div>
 </div>
 
 <div class="listarInforme">
-    <form *ngIf="mostrarListar" [formGroup]="formularioListar">
-        <button (click)="limpiarLista()" (click)="mostrarHtml(2)" style="margin-right: 30px;">Limpiar lista</button>
-        <br><br>
-        <table>
-            <thead>
-
-                <th>{{TablaPrestamo[0]}}</th>
-                <th>{{TablaPrestamo[1]}}</th>
-                <th>{{TablaPrestamo[2]}}</th>
-                <th>{{TablaPrestamo[3]}}</th>
-                <th>{{TablaPrestamo[4]}}</th>
-                <th>{{TablaPrestamo[5]}}</th>
-
-            </thead>
-            <tbody>
-                <tr *ngFor="let data of dataInforme">
-                    <th> {{ data.id_prestamo}} </th>
-                    <th> {{ data.fecha_prestamo}} </th>
-                    <th> {{ data.fecha_entrega}} </th>
-                    <th> {{ data.elemento }} </th>
-                    <th> {{ data.estado}} </th>
-                    <th> {{ data.nombre_1}} {{ data.apellido_1 }}</th>
-                </tr>
-            </tbody>
-        </table>
-    </form>
+  <form *ngIf="mostrarListar" [formGroup]="formularioListar">
+    <button
+      (click)="limpiarLista()"
+      (click)="mostrarHtml(2)"
+      style="margin-right: 30px"
+    >
+      Limpiar lista
+    </button>
+    <br /><br />
+    <table>
+      <thead>
+        <th>{{ TablaPrestamo[0] }}</th>
+        <th>{{ TablaPrestamo[1] }}</th>
+        <th>{{ TablaPrestamo[2] }}</th>
+        <th>{{ TablaPrestamo[3] }}</th>
+        <th>{{ TablaPrestamo[4] }}</th>
+        <th>{{ TablaPrestamo[5] }}</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of dataInforme">
+          <th>{{ data.id_prestamo }}</th>
+          <th>{{ data.fecha_prestamo }}</th>
+          <th>{{ data.fecha_entrega }}</th>
+          <th>{{ data.elemento }}</th>
+          <th>{{ data.estado }}</th>
+          <th>{{ data.nombre_1 }} {{ data.apellido_1 }}</th>
+        </tr>
+      </tbody>
+    </table>
+  </form>
 </div>
